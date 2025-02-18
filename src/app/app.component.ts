@@ -5,7 +5,7 @@ import { CategoriesComponent } from './components/categories/categories/categori
 
 @Component({
   selector: 'app-root',
-  imports: [CategoriesComponent],
+  imports: [CategoriesComponent, TestComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
