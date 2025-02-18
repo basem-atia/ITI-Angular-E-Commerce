@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header d-flex position-relative">
+    <div class="position-absolute {{ badge }}">
+      {{
+        badge == "discount" ? "-" + discount + "%" : badge == "new" ? "NEW" : ""
+      }}
+    </div>
+    <div class="position-absolute icon-container d-flex flex-column">
+      <button
+        class="btn btn-light shadow-sm"
+        appSwitchImg
+        [src1]="iconHeart"
+        [src2]="iconHeartRed"
+      >
+        <img [src]="iconHeart" alt="" srcset="" />
+      </button>
+      <button class="btn btn-light shadow-sm">
+        <img [src]="iconEye" alt="" srcset="" style="height: 13px" />
+      </button>
+    </div>
+    <img
+      [src]="productImg"
+      class="card-img-top img-thumbnail m-auto"
+      alt="..."
+    />
+  </div>
+  <div class="card-body">
+    <p class="card-title m-0">{{ productName }}</p>
+    <div
+      class="d-flex price-container {{ badge != 'discount' ? 'd-none' : '' }}"
+    >
+      <div class="card-text">
+        {{ price | currency : "USD" : "symbol-narrow" : "1.0" }}
+      </div>
+      <div class="card-text old-price">
+        {{ oldPrice | currency : "USD" : "symbol-narrow" : "1.0" }}
+      </div>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <div class="card-text {{ badge == 'discount' ? 'd-none' : '' }}">
+        {{ price | currency : "USD" : "symbol-narrow" : "1.0" }}
+      </div>
+      <app-rating id="1"></app-rating>
+    </div>
+  </div>
+</div>
