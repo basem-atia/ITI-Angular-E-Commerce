@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TestComponent } from './test/test.component';
 import { CategoriesComponent } from './components/categories/categories/categories.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 @Component({
