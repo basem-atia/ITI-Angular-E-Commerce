@@ -1,0 +1,10 @@
+a{
+  text-decoration: none;
+  color: #fff;
+}
+p{
+  transition: all 0.3s;
+}
+p:hover{
+  transform: translatex(10px);
+}

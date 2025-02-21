@@ -1,0 +1,7 @@
+.list-group-item[data-bs-toggle="collapse"] i {
+  transition: transform 0.3s;
+}
+
+.list-group-item[data-bs-toggle="collapse"][aria-expanded="true"] i {
+  transform: rotate(90deg);
+}

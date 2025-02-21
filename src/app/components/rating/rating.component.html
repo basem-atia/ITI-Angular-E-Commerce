@@ -1,0 +1,8 @@
+<div class="d-flex align-items-center">
+  <div>
+    @for (item of avg; track $index) {
+    <img [src]="item" alt="" srcset="" />
+    }
+  </div>
+  <div class="opacity-50 ms-2">({{ numberOfRatings }})</div>
+</div>
