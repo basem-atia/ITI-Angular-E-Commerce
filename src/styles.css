@@ -1,4 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --main: #db4444;
+  /* --main: #c29613; */
+}
+.text-main {
+  color: var(--main);
+}
+* {
+  transition-property: transform !important;
+  transition-duration: 0.3s !important;
+}
+.btn-main {
+  background-color: var(--main);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Poppins;
+  padding: 16px 48px;
+  width: max-content;
+  color: white;
+}
+.btn-main:hover {
+  background-color: var(--main);
+  color: white;
+  transform: scale(1.05);
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+.btn-main:disabled {
+  background-color: var(--main);
+  color: white;
 }
