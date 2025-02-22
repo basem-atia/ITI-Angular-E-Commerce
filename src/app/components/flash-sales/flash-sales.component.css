@@ -1,3 +1,41 @@
 .gap-24 {
   gap: 24px;
 }
+.gap-150 {
+  gap: 150px;
+}
+small {
+  font-weight: 500;
+  font-size: 12px;
+}
+.w-t {
+  min-width: 45px !important;
+  max-width: 45px !important;
+  text-align: center;
+}
+.w-t- {
+  min-width: 10px !important;
+  max-width: 10px !important;
+  text-align: center;
+}
+.products {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  overflow-y: hidden;
+  height: 375px;
+}
+.btn-light {
+  height: 35px;
+  width: 35px;
+  padding: 0px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+@media (max-width: 800px) {
+  .gap-150 {
+    gap: 5px;
+  }
+}
