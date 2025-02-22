@@ -18,11 +18,10 @@
         <img [src]="iconEye" alt="" srcset="" style="height: 13px" />
       </button>
     </div>
-    <img
-      [src]="productImg"
+    <div
+      style="background-image: url('{{ productImg }}')"
       class="card-img-top img-thumbnail m-auto"
-      alt="..."
-    />
+    ></div>
   </div>
   <div class="card-body">
     <p class="card-title m-0">{{ productName }}</p>

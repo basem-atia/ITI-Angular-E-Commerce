@@ -6,8 +6,8 @@ body {
   padding: 0;
 }
 .full-container {
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   height: 100%;
   width: 100%;
 }
@@ -32,6 +32,7 @@ body {
   justify-content: center;
   font-size: 1rem;
   padding-left: 2rem;
+  margin-left: auto;
 }
 .left,
 .right {
@@ -99,7 +100,7 @@ input[type="email"] {
 }
 
 .create-account {
-  background: #db4444;
+  background: var(--main);
   color: white;
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
@@ -136,11 +137,12 @@ input[type="email"] {
   }
 
   .google-signup {
+    width: 100%;
     padding-right: 0;
   }
 
   .google-signup-btn {
-    background-position: left 0.5rem center;
+    background-position: left 39% center;
     background-size: 1.2rem;
     font-size: 1rem;
     height: 2.8rem;
@@ -190,11 +192,12 @@ input[type="email"] {
   }
 
   .google-signup {
+    width: 100%;
     padding-right: 0;
   }
 
   .google-signup-btn {
-    background-position: left 0.5rem center;
+    background-position: left 30% center;
     background-size: 1.2rem;
     font-size: 1rem;
     height: 2.8rem;
@@ -212,7 +215,7 @@ input[type="email"] {
 }
 @media (max-width: 576px) {
   .google-signup-btn {
-    background-position: left 0.5rem center;
+    background-position: left 26% center;
     background-size: 1rem;
     font-size: 0.8rem;
     height: 2.8rem;

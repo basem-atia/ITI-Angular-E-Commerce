@@ -6,8 +6,8 @@ body {
   padding: 0;
 }
 .full-container {
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   height: 100%;
   width: 100%;
 }
@@ -78,7 +78,7 @@ input[type="email"] {
 }
 
 .log-in {
-  background: #db4444;
+  background: var(--main);
   color: white;
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
