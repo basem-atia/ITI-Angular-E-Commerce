@@ -6,8 +6,6 @@ body {
   padding: 0;
 }
 .full-container {
-  margin-top: 5%;
-  margin-bottom: 5%;
   height: 100%;
   width: 100%;
 }
@@ -83,8 +81,27 @@ input[type="email"] {
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
 }
+.password {
+  position: relative;
+  width: 200%;
+}
+.password input {
+  width: 100%;
+}
+.password i {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #7e6f97;
+  font-size: 1rem;
+}
 /* Tablets (Medium Devices) */
 @media (max-width: 1143px) {
+  .password {
+    width: 100%;
+  }
   .full-container {
     margin-top: 5%;
     margin-bottom: 5%;

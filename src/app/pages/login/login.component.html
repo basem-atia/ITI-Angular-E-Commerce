@@ -5,7 +5,7 @@
     </div>
     <div class="right col-md-6 col-12">
       <h2>Log in to Exclusive</h2>
-      <p class="below">Enter your details below</p>
+      <!-- <p class="below">Enter your details below</p> -->
       <form [formGroup]="myForm" class="form">
         <div class="form-group">
           <input
@@ -29,13 +29,26 @@
           </span>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <input
             #password
             formControlName="password"
             type="password"
             placeholder="Password"
           />
+        </div> -->
+        <div class="form-group password">
+          <input
+            #password
+            formControlName="password"
+            [type]="visible ? 'text' : 'password'"
+            placeholder="Password"
+          />
+          <i
+            [ngClass]="visible ? 'fa-eye' : 'fa-eye-slash'"
+            class="fa-solid fa-eye-slash"
+            (click)="PasswordVisibility()"
+          ></i>
         </div>
         <div
           class="valid"

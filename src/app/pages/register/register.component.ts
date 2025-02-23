@@ -9,7 +9,7 @@ import {
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
@@ -34,4 +34,9 @@ export class RegisterComponent {
       ),
     ]),
   });
+
+  visible = false;
+  PasswordVisibility(): void {
+    this.visible = !this.visible;
+  }
 }

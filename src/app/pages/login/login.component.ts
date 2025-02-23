@@ -14,12 +14,8 @@ import {
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  visible = false;
   myForm = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.pattern('^[a-zA-Z]+$'),
-    ]),
     emailPhone: new FormControl('', [
       Validators.required,
       Validators.pattern(
@@ -34,4 +30,8 @@ export class LoginComponent {
       ),
     ]),
   });
+
+  PasswordVisibility(): void {
+    this.visible = !this.visible;
+  }
 }
