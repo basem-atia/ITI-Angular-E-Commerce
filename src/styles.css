@@ -31,3 +31,6 @@
   background-color: var(--main);
   color: white;
 }
+.w-max-content {
+  width: max-content;
+}

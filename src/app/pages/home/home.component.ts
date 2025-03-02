@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
-import { AdvertisementComponent } from '../../components/advertisement/advertisement.component';
 import { SideBarComponent } from '../../components/side-bar/side-bar.component';
 import { CategoriesComponent } from '../../components/categories/categories/categories.component';
 import { FlashSalesComponent } from '../../components/flash-sales/flash-sales.component';
+import { ProductCardComponent } from '../../components/product-card/product-card.component';
 
 @Component({
   selector: 'app-home',
   imports: [
-    AdvertisementComponent,
     SideBarComponent,
     CategoriesComponent,
     FlashSalesComponent,
+    ProductCardComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
   time: number = 300050;
-  products: any = [
+  productsFlash: any = [
     {
       img: 'https://s3-alpha-sig.figma.com/img/5d5c/2e52/50752d55f8b60f2aa2923183dadbc135?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Lue-WfNRxXsWTtiD1iUM~cfhT4rDJO8dbUzqCA1upxp3l8rtJUDNL90P801snSqj7s5rncO~VjwPhzFT4eGuLTBbmMln2mfFhBVM6hKxZzNxrgnyLGo5-bmuPhs~Ie4gIWspVKSbHFSDvi1ZURKt-RaOGvaipxRqawKg-3zKxIORIwPfHOiyE9WGwmhLRE9WAkVMTplY1NMumImMBEpcw3Gjg-IPXO~L9Gi90MBLUgc834o-ERLZrMxZM9kj7z97~cdYbU7N-N4NZE2teQC2MxoefxyozPBKZ0NIz-KKJ7~KgCeqKJW4h-rwfweCINWQ5UDpDyIBTZyOv4AY-PDj2Q__',
       name: 'HAVIT HV-G92 Gamepad',
@@ -53,5 +53,13 @@ export class HomeComponent {
       oldPrice: '160',
       discount: '40',
     },
+  ];
+  products: any = [
+    ...this.productsFlash,
+    ...this.productsFlash,
+    ...this.productsFlash,
+    ...this.productsFlash,
+    ...this.productsFlash,
+    ...this.productsFlash,
   ];
 }

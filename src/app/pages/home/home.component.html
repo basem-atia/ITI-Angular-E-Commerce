@@ -1,11 +1,25 @@
-<div class="d-flex gap-5 flex-column pb-5 container">
-  <div class="d-flex">
-    <app-side-bar></app-side-bar>
-    <app-advertisement></app-advertisement>
+<div class="d-flex">
+  <app-side-bar></app-side-bar>
+  <div class="d-flex gap-5 flex-column pb-5 container">
+    <div class="p-3 d-flex flex-wrap justify-content-between gap-5">
+      @for (product of products; track $index) {
+      <app-product-card
+        productImg="{{ product.img }}"
+        badge="discount"
+        productName="{{ product.name }}"
+        price="{{ product.price }}"
+        oldPrice="{{ product.oldPrice }}"
+        discount="{{ product.discount }}"
+      ></app-product-card>
+      }
+      <div class="hidden-card"></div>
+      <div class="hidden-card"></div>
+      <div class="hidden-card"></div>
+      <div class="hidden-card"></div>
+    </div>
+    <!-- <app-flash-sales [products]="productsFlash" [time]="time"></app-flash-sales>
+    <button class="btn btn-main m-auto">View All Products</button>
+    <hr />
+    <app-categories></app-categories> -->
   </div>
-  <hr />
-  <app-flash-sales [products]="products" [time]="time"></app-flash-sales>
-  <button class="btn btn-main m-auto">View All Products</button>
-  <hr />
-  <app-categories></app-categories>
 </div>
