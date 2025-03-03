@@ -6,6 +6,16 @@
       }}
     </div>
     <div class="position-absolute icon-container d-flex flex-column">
+      @if(wishlist){
+      <button
+        class="btn btn-light shadow-sm"
+        appSwitchImg
+        [src1]="iconHeart"
+        [src2]="iconHeartRed"
+      >
+        <i class="bi bi-trash3"></i>
+      </button>
+      } @else {
       <button
         class="btn btn-light shadow-sm"
         appSwitchImg
@@ -17,6 +27,7 @@
       <button class="btn btn-light shadow-sm">
         <img [src]="iconEye" alt="" srcset="" style="height: 13px" />
       </button>
+      }
     </div>
     <div
       style="background-image: url('{{ productImg }}')"
