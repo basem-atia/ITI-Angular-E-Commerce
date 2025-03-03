@@ -21,6 +21,8 @@ export class ProductCardComponent {
   price = '120';
   @Input()
   oldPrice = '160';
+  @Input()
+  wishlist: boolean = false;
   iconHeart = 'icons/heart.png';
   iconHeartRed = 'icons/heartR.png';
   iconEye = 'icons/eye.png';

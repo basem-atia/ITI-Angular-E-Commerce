@@ -5,13 +5,14 @@
 .list-group-item[data-bs-toggle="collapse"][aria-expanded="true"] i {
   transform: rotate(90deg);
 }
-.z-100 {
-  z-index: 100;
-}
+
 .w {
   width: 230px;
-  top: 60px;
 }
 i {
   opacity: 0.5;
+}
+a {
+  width: 230px;
+  display: flex;
 }

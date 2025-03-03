@@ -9,6 +9,9 @@
   cursor: pointer;
   gap: 16px;
 }
+.card:hover {
+  transform: scale(0.9);
+}
 img {
   width: 172px;
   height: 152px;

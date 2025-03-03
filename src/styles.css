@@ -7,7 +7,7 @@
   color: var(--main);
 }
 * {
-  transition-property: transform !important;
+  transition-property: all !important;
   transition-duration: 0.3s !important;
 }
 .btn-main {
@@ -33,4 +33,8 @@
 }
 .w-max-content {
   width: max-content;
+}
+.hidden-card {
+  width: 270px;
+  height: 0.5px;
 }
