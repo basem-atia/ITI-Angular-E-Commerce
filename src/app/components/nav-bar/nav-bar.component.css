@@ -16,6 +16,16 @@
   background-color: var(--light) !important;
 }
 
+.navbar-brand {
+  transform: scale(0.7);
+  border: double 4px var(--main);
+  padding: 10px 15px;
+  border-radius: 100%;
+  font-family: Poppins;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+}
 .container-fluid > div > .btn {
   transform: scale(0.8);
   width: 67px;
