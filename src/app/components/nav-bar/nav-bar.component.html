@@ -1,46 +1,74 @@
 <nav
-  class="navbar navbar-expand-lg border-top px-4 sticky-top w-100 bg-dark"
+  class="navbar navbar-expand-lg bg-body-tertiary sticky-top py-lg-1 py-0 {{
+    hide ? 'd-none' : 'd-flex'
+  }}"
   data-bs-theme="dark"
 >
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Exclusive</a>
+    <a class="navbar-brand" routerLink="">
+      <div>Exclusive</div>
+    </a>
 
-    <button
-      class="navbar-toggler btn-sm"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
+    <div
+      class="mx-auto d-flex gap-1 w-100 container-search border bg-dark d-lg-flex d-none"
     >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Sign Up</a></li>
-      </ul>
-
-      <div class="d-flex align-items-center">
-        <div class="search-box d-flex align-items-center">
-          <input
-            type="text"
-            placeholder="What are you looking for?"
-            class="form-control"
-          />
-          <i class="fas fa-search"></i>
-        </div>
-
-        <div class="icons ms-3">
-          <a href="#" class="position-relative">
-            <i class="fas fa-heart"></i>
-            <span class="badge">1</span>
-          </a>
-          <a href="#"><i class="fas fa-shopping-cart"></i></a>
-          <a href="#"><i class="fas fa-user"></i></a>
-        </div>
+      <div class="">
+        <button
+          type="button"
+          class="btn btn-dark dropdown-toggle w-100 border-0 border-end rounded-0"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Woman's Fashion
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+        </ul>
       </div>
+      <form class="d-flex w-100 border-0" role="search">
+        <input
+          class="form-control border-0 w-100"
+          type="search"
+          placeholder="Find it faster with a search"
+          aria-label="Search"
+        />
+        <i class="bi bi-search h-100"></i>
+      </form>
+    </div>
+    <div>
+      <button class="btn btn-sm btn-outline-light me-1" routerLink="signup">
+        Sign up
+      </button>
+      <button class="btn btn-sm btn-light" routerLink="login">Log in</button>
     </div>
   </div>
+  <nav
+    class="navbar navbar-expand-lg bg-light flex-nowrap d-flex d-lg-none shadow border-top justify-content-center w-100"
+    data-bs-theme="light"
+  >
+    <div class="mx-auto d-flex gap-1 w-100 container-search border">
+      <div class="">
+        <button
+          type="button"
+          class="btn btn-light dropdown-toggle w-100 border-0 border-end rounded-0"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Woman's Fashion
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+        </ul>
+      </div>
+      <form class="d-flex w-100 border-0" role="search">
+        <input
+          class="form-control border-0 w-100 bg-light"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <i class="bi bi-search h-100"></i>
+      </form>
+    </div>
+  </nav>
 </nav>

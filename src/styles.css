@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --main: #db4444;
-  /* --main: #c29613; */
+  /* --main: #db4444; */
+  --main: #c29613;
+  --light: #f8f9fa;
 }
 .text-main {
   color: var(--main);
@@ -37,4 +38,8 @@
 .hidden-card {
   width: 270px;
   height: 0.5px;
+}
+input:focus {
+  box-shadow: none !important;
+  border-color: white !important;
 }
