@@ -1,0 +1,20 @@
+h3 {
+  text-transform: capitalize;
+}
+.seeMore {
+  background-color: #ffffff9d;
+  color: #2b3035;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.seeMore:hover {
+  opacity: 1;
+}

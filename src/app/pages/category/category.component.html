@@ -1,0 +1,52 @@
+<div class="d-flex">
+  <app-side-bar></app-side-bar>
+  <div class="d-flex gap-5 flex-column pb-5 container">
+    <div class="p-3 d-flex flex-wrap justify-content-evenly gap-5">
+      @for (product of products; track $index) {
+      <app-product-card
+        productImg="{{ product.img }}"
+        badge="discount"
+        productName="{{ product.name }}"
+        price="{{ product.price }}"
+        oldPrice="{{ product.oldPrice }}"
+        discount="{{ product.discount }}"
+      ></app-product-card>
+      }
+      <div class="hidden-card"></div>
+      <div class="hidden-card"></div>
+      <div class="hidden-card"></div>
+      <div class="hidden-card"></div>
+    </div>
+    <!-- <app-flash-sales [products]="productsFlash" [time]="time"></app-flash-sales>
+      <button class="btn btn-main m-auto">View All Products</button>
+      <hr />
+      <app-categories></app-categories> -->
+    <nav aria-label="Page navigation example ">
+      <ul class="pagination d-flex justify-content-center">
+        <li class="page-item rounded-start-2">
+          <a class="page-link link-dark border-end-0" href="#">Previous</a>
+        </li>
+        @for (page of pages; track $index) {
+        <li class="page-item">
+          <a
+            class="page-link link-dark border-0 border-top border-bottom"
+            href="#"
+            >{{ $index + 1 }}</a
+          >
+        </li>
+        }
+        <li class="page-item rounded-end-2">
+          <a class="page-link link-dark border-start-0" href="#">...</a>
+        </li>
+        <li class="page-item rounded-end-2">
+          <a class="page-link border-start-0 disabled bg-white" href="#">{{
+            numberOfPages
+          }}</a>
+        </li>
+        <li class="page-item rounded-end-2">
+          <a class="page-link link-dark border-start-0" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

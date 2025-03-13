@@ -1,30 +1,25 @@
 import { Component } from '@angular/core';
-import { CategoryService } from '../../services/category.service';
+import { SideBarComponent } from '../../components/side-bar/side-bar.component';
+// import { CategoriesComponent } from '../../components/categories/categories/categories.component';
+// import { FlashSalesComponent } from '../../components/flash-sales/flash-sales.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  imports: [ProductCardComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  selector: 'app-category',
+  imports: [
+    SideBarComponent,
+    // CategoriesComponent,
+    // FlashSalesComponent,
+    ProductCardComponent,
+  ],
+  templateUrl: './category.component.html',
+  styleUrl: './category.component.css',
 })
-export class HomeComponent {
-  categories: any;
-  constructor(
-    private categoryServices: CategoryService,
-    private router: Router
-  ) {
-    categoryServices.getAll().subscribe({
-      next: (data) => {
-        this.categories = data;
-      },
-    });
-  }
-  goToCategory = (categoryId: string) => {
-    this.router.navigateByUrl(`category/${categoryId}`);
-  };
-  products: any = [
+export class CategoryComponent {
+  time: number = 300050;
+  numberOfPages: number = 10;
+  pages = new Array(4).fill(0, 0, this.numberOfPages);
+  productsFlash: any = [
     {
       img: 'https://s3-alpha-sig.figma.com/img/5d5c/2e52/50752d55f8b60f2aa2923183dadbc135?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Lue-WfNRxXsWTtiD1iUM~cfhT4rDJO8dbUzqCA1upxp3l8rtJUDNL90P801snSqj7s5rncO~VjwPhzFT4eGuLTBbmMln2mfFhBVM6hKxZzNxrgnyLGo5-bmuPhs~Ie4gIWspVKSbHFSDvi1ZURKt-RaOGvaipxRqawKg-3zKxIORIwPfHOiyE9WGwmhLRE9WAkVMTplY1NMumImMBEpcw3Gjg-IPXO~L9Gi90MBLUgc834o-ERLZrMxZM9kj7z97~cdYbU7N-N4NZE2teQC2MxoefxyozPBKZ0NIz-KKJ7~KgCeqKJW4h-rwfweCINWQ5UDpDyIBTZyOv4AY-PDj2Q__',
       name: 'HAVIT HV-G92 Gamepad',
@@ -53,5 +48,20 @@ export class HomeComponent {
       oldPrice: '1160',
       discount: '35',
     },
+    {
+      img: 'https://s3-alpha-sig.figma.com/img/ee9a/3800/1e9f94261b28e16ea21bacb4144473e8?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=hvIVD7CaRpIkPhchqObndREwaqdYxAmnI0G-e1pjdKY7nyP7YMKNlRtZ1vcK7VoeB6c3LaHxNAYTkkrV4cCHwg-uoLSA-c8ACpwMlvKlqEPOGhqLcTwsE2-6sArFPMKDgeJNqBmVyNZWl6apzETMGk364JvES3OVRd2gks714UUfVWbu-vel35~hUmOSXPFk1tCfbd9yYsmrtNS2QiZ49i7sB42qzYHnBktr4sty5e3Ga7R7P3IhAsD2Fe-Z4m1do~BRwnoSxowKgYb4Df12UTXQ3yOOYbJEssM4b9ye83Oj~LR3LuYvhaHmBXHkEUGccCfU~Jp-pzFpS1vepwe2tQ__',
+      name: 'HAVIT HV-G92 Gamepad',
+      price: '140',
+      oldPrice: '160',
+      discount: '40',
+    },
+  ];
+  products: any = [
+    ...this.productsFlash,
+    ...this.productsFlash,
+    ...this.productsFlash,
+    ...this.productsFlash,
+    ...this.productsFlash,
+    ...this.productsFlash,
   ];
 }
