@@ -1,0 +1,92 @@
+
+    <section class="container mt-4">
+        <div class="breadcrumb mb-4">
+            <a href="#" class="text-muted">Account</a>
+            <span> / </span>
+            <a href="#" class="text-muted">My Account</a>
+            <span> / </span>
+            <a href="#" class="text-muted">Product</a>
+            <span> / </span>
+            <a href="#" class="text-muted">View Cart</a>
+            <span class="activee"> / Check Out</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6 p-4">
+                <h3>Billing Details</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">First Name<span>*</span></label>
+                        <input type="text" class="form-control" id="name" placeholder="First Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="company" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="company" placeholder="Company Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="street" class="form-label">Street Address<span>*</span></label>
+                        <input type="text" class="form-control" id="street" placeholder="Street Address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="apartment" class="form-label">Apartment, Floor, etc (Optional)</label>
+                        <input type="text" class="form-control" id="apartment" placeholder="Floor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">Town/City<span>*</span></label>
+                        <input type="text" class="form-control" id="city" placeholder="City">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number<span>*</span></label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone Number">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email<span>*</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div>
+                      <div class="form-group mb-2">
+                        <input type="checkbox" id="box" style="background-color: #db4444;">
+                        <label class="m-1" for="box">Save this information for faster check-out next time</label>
+                      </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6 p-4">
+                <h3>Order Summary</h3>
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex">
+                        <img src="play.png" alt="PlayStation" class="me-2" width="50">
+                        <p class="fs-6">Play Station</p>
+                    </div>
+                    <p class="text-danger">$2000</p>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex">
+                        <img src="screen.png" alt="LCD Monitor" class="me-2" width="50">
+                        <p class="fs-6">LCD Monitor</p>
+                    </div>
+                    <p class="text-danger">$10000</p>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <p>Subtotal:</p>
+                    <p class="text-danger">$1750</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>Shipping:</p>
+                    <p class="text-success">Free</p>
+                </div>
+                <hr>
+                <h5>Payment Method</h5>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="bank" name="payment" value="bank">
+                    <label class="form-check-label" for="bank">Bank Transfer <i class="fa-brands fa-cc-mastercard me-3"></i> <i class="fa-brands fa-cc-visa"></i> <i class="fa-barnds fa-cc-paypal ms-2"> </i> </label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="cash" name="payment" value="cash">
+                    <label class="form-check-label" for="cash">Cash on Delivery</label>
+                </div>
+                <button class="btn btn-danger w-100 mt-4">Proceed to Checkout</button>
+            </div>
+        </div>
+    </section>
+
