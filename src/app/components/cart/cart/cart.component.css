@@ -1,0 +1,356 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  display: none;
+}
+.tablee {
+  height: 35vh;
+  overflow-y: scroll;
+}
+.thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+.product-image {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("https://i.ibb.co/jkKYpYq1/tv.png");
+  width: 50px;
+  height: 40px;
+  /* https://i.ibb.co/jkKYpYq1/tv.png */
+}
+.text {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.title {
+  display: flex;
+  gap: 0.75rem;
+  width: 6.4375rem;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+.word-transparent {
+  opacity: 0.5;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+  color: black;
+}
+.word {
+  opacity: 1;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+  color: black;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.product {
+  width: 35%;
+  border-left: 4px solid #fafafa;
+}
+.price {
+  width: 20%;
+}
+.subtotal {
+  width: 20%;
+  border-right: 4px solid #fafafa;
+}
+.quantity {
+  width: 25%;
+}
+
+.thead {
+  width: 100%;
+  height: 4.5rem;
+  border-radius: 0.25rem;
+}
+.thead .td {
+  height: 4.5rem;
+}
+.td {
+  background-color: #fff;
+  border-top: 4px solid #fafafa;
+  border-bottom: 4px solid #fafafa;
+}
+
+.tr .td {
+  height: 5rem;
+  padding: 0.5rem;
+  padding-left: 1.3rem;
+}
+.thead .td {
+  padding-left: 1.3rem;
+}
+.thead .td span {
+  font-weight: bold;
+}
+.td {
+  text-align: left;
+  align-content: center;
+}
+
+.product,
+.price,
+.quantity,
+.subtotal {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.custom-input {
+  width: 6rem;
+  position: relative;
+}
+.quantity-input {
+  width: 6rem;
+  height: 2.75rem;
+  text-align: center;
+  border: 0.09375rem solid #ccc;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+.product-description {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+.product-image {
+  width: 3.375rem;
+  height: 3.375rem;
+}
+
+.button {
+  padding: 1rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  width: 13.625rem;
+  height: 3.5rem;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  transition: transform 0.1s ease;
+}
+.button:hover {
+  transform: scale(1.03);
+}
+.return-shop:hover,
+.update-cart:hover {
+  border: 1px solid #000;
+}
+.return-shop {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+}
+
+.update-cart {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+.product-cancel {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 0.75rem;
+  left: 0.375rem;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.product-image:hover .product-cancel {
+  opacity: 1;
+  visibility: visible;
+  cursor: pointer;
+}
+
+.cancel-circle {
+  color: #db4444;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cancel-x {
+  color: white;
+  font-size: 1.25rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.coupon-field {
+  height: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.coupon-field input {
+  width: 55%;
+  height: 100%;
+  border: 0.0625rem solid #000;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  padding-left: 0.75rem;
+  outline: none;
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.coupon-field .apply-coupon {
+  padding: 1rem 1rem;
+  width: 40%;
+  height: 100%;
+  background-color: #db4444;
+  color: #ddd;
+  border-radius: 0.25rem;
+}
+.cart-total {
+  height: 20rem;
+  border: 0.1rem solid #000;
+  border-radius: 0.25rem;
+  justify-content: space-evenly;
+}
+.cart-det {
+  width: 90%;
+  height: 100%;
+}
+.cart-total .cart-det p {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #000;
+}
+.cart-total .cart-det .subtotal-div {
+  height: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-total .cart-det .subtotal-div .label,
+.cart-total .cart-det .subtotal-div .text {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #000;
+}
+hr {
+  width: 100%;
+  opacity: 0.4;
+}
+.process-to-checkout {
+  padding: 1rem 0.5rem;
+
+  color: #ddd;
+  background-color: #db4444;
+}
+
+@media (max-width: 992px) and (min-width: 576px) {
+  .item span {
+    display: none;
+  }
+  .product {
+    width: 25%;
+  }
+  .price {
+    width: 24%;
+  }
+  .subtotal {
+    width: 25%;
+  }
+  .quantity {
+    width: 26%;
+  }
+}
+@media (max-width: 576px) {
+  .item span {
+    display: none;
+  }
+  .thead .td,
+  .tr .td {
+    padding-left: 0;
+  }
+  .product {
+    width: 25%;
+  }
+  .price {
+    width: 24%;
+  }
+  .subtotal {
+    width: 25%;
+  }
+  .quantity {
+    width: 26%;
+  }
+  .coupon-field input {
+    width: 50%;
+  }
+  .coupon-field .apply-coupon {
+    width: 45%;
+  }
+  .quantity-input,
+  .custom-input {
+    width: 99%;
+  }
+}
+
+.spinner-buttons {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spinner-buttons button {
+  width: 16px;
+  height: 10px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+.spinner-buttons button i::before {
+  font-weight: bolder !important;
+}
+
+.spinner-buttons button:hover {
+  background: #e0e0e0;
+  border-radius: 2px;
+}

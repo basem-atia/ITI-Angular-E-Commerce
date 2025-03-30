@@ -1,0 +1,31 @@
+<div class="card border">
+  <div class="card-header d-flex position-relative">
+    <div class="badge-container">
+      <div class="new">New</div>
+      @if (product.discount>0) {
+      <div class="discount">
+        {{ "-" + product.discount + "%" }}
+      </div>
+      }
+    </div>
+
+    <div
+      style="background-image: url('{{ product.image }}')"
+      class="card-img-top img-thumbnail m-auto"
+    ></div>
+  </div>
+  <div class="card-body">
+    <p class="card-title m-0">{{ product.name }}</p>
+    <div class="d-flex price-container flex-wrap">
+      <div class="card-text">
+        {{ price | currency : "USD" : "symbol-narrow" : "1.0" }}
+      </div>
+      <div
+        class="card-text old-price {{ product.discount == 0 ? 'd-none' : '' }}"
+      >
+        {{ oldPrice | currency : "USD" : "symbol-narrow" : "1.0" }}
+      </div>
+      <app-rating [id]="product._id"></app-rating>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="w h-100 bg-white shadow d-none d-sm-flex">
+  <div class="list-group list-group-flush">
+    <!-- First collapsible tab -->
+    <a
+      class="list-group-item d-flex justify-content-around align-items-center border-0"
+      data-bs-toggle="collapse"
+      href="#collapseTab1"
+      role="button"
+      aria-expanded="true"
+      aria-controls="collapseTab1"
+    >
+      {{ category.name }}
+      <i class="bi bi-caret-right-fill ms-auto opacity-1"></i>
+    </a>
+    <div class="collapse show" id="collapseTab1">
+      <div class="form-check ps-5">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="subCategory"
+          id="all"
+          checked
+        />
+        <label class="form-check-label" for="all"> All </label>
+      </div>
+      @if (subCategories) { @for (subCategory of subCategories.data; track
+      $index) {
+      <div class="form-check ps-5">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="subCategory"
+          [id]="subCategory.name"
+        />
+        <label class="form-check-label" [for]="subCategory.name">
+          {{ subCategory.name }}
+        </label>
+      </div>
+
+      } }
+    </div>
+  </div>
+</div>

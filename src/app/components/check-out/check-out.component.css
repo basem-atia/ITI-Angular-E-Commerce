@@ -1,0 +1,19 @@
+a{
+  text-decoration: none;
+  color: black;
+}
+span{
+  color: #db4444;
+  font-weight: 700;
+}
+.activee {
+  font-weight: bold;
+  color: #bd4444;
+}
+.details label span {
+  color: red;
+}
+.payment-icons i {
+  font-size: 20px;
+  margin-left: 10px;
+}

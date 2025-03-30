@@ -1,0 +1,60 @@
+<div class="container-fluid full-container">
+  <div class="row justify-content-center align-items-center">
+    <div class="left col-md-6 col-12">
+      <div class="image"></div>
+    </div>
+    <div class="right col-md-6 col-12">
+      <h2>Log in to Exclusive</h2>
+      <p class="below">Enter your details below</p>
+      <form [formGroup]="myForm" class="form">
+        <div class="form-group">
+          <input
+            #emailPhone
+            formControlName="emailPhone"
+            type="email"
+            placeholder="Email or Phone Number"
+          />
+        </div>
+        <div
+          class="valid"
+          [ngClass]="{
+            'error-msg':
+              !myForm.controls['emailPhone'].valid && emailPhone.value
+          }"
+        >
+          <span
+            *ngIf="!myForm.controls['emailPhone'].valid && emailPhone.value"
+          >
+            Invalid email/phone format
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            #password
+            formControlName="password"
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+        <div
+          class="valid"
+          [ngClass]="{
+            'error-msg': !myForm.controls['password'].valid && password.value
+          }"
+        >
+          <span *ngIf="!myForm.controls['password'].valid && password.value">
+            Invalid password format
+          </span>
+        </div>
+
+        <div>
+          <input class="log-in" type="button" value="Log In" />
+        </div>
+      </form>
+      <div class="forget-password">
+        <p>Forget Password?</p>
+      </div>
+    </div>
+  </div>
+</div>

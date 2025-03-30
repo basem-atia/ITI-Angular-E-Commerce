@@ -1,0 +1,168 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.full-container {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  height: 100%;
+  width: 100%;
+}
+.image {
+  background: url("/images/Side Image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 42.2rem;
+  height: 33.125rem;
+}
+.left,
+.right {
+  padding: 0;
+  margin: 0;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.below {
+  padding-right: 23%;
+}
+.form {
+  padding-right: 19%;
+}
+.forget-password {
+  display: inline-block;
+  margin-top: 1rem;
+  position: relative;
+  padding-left: 10%;
+}
+.forget-password p {
+  cursor: pointer;
+  color: #db4444;
+  display: inline;
+  margin: 0;
+}
+input {
+  outline: none;
+  border: none;
+  width: 200%;
+  padding: 0.5rem;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  border-bottom: 2px solid gray;
+}
+.error-msg {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.3rem;
+  min-height: 1rem;
+}
+.valid {
+  margin-top: 0.7rem;
+  margin-bottom: 0.3rem;
+  min-height: 1.2rem;
+}
+
+.log-in {
+  background: #db4444;
+  color: white;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+/* Tablets (Medium Devices) */
+@media (max-width: 1143px) {
+  .full-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .form {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .forget-password {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+/* Mobile (Small Devices) */
+@media (max-width: 768px) {
+  .full-container {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 1rem;
+  }
+
+  .row {
+    width: 100%;
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .below {
+    padding-right: 0;
+  }
+
+  .form {
+    padding-right: 0;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .forget-password {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .log-in {
+    width: 100%;
+  }
+}

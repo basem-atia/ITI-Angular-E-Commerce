@@ -1,0 +1,9 @@
+h3 {
+  text-transform: capitalize;
+}
+.btn-view {
+  width: 350px;
+  margin: auto;
+  padding: 10px 0px;
+  margin-bottom: 10px;
+}

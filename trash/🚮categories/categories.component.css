@@ -168,7 +168,7 @@
 }
 .cards:hover {
   color: white;
-  background-color: #db4444;
+  background-color: var(--main);
   border: none;
 }
 .cards p {
