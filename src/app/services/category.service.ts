@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { TCategory } from '../types/TCategory';
+import { Observable } from 'rxjs';
+import { APIURL } from './URL';
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  url = 'http://localhost:3000/category/getAll';
+  url = `${APIURL}category/`;
   constructor(public http: HttpClient) {}
-  getAll() {
-    return this.http.get(this.url);
+  getAll(): Observable<{ data: TCategory[] }> {
+    return this.http.get<{ data: TCategory[] }>(`${this.url}getAll`);
   }
 }

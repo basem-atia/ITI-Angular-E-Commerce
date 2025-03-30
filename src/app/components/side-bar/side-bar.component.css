@@ -16,3 +16,10 @@ a {
   width: 230px;
   display: flex;
 }
+* {
+  text-transform: capitalize;
+}
+.form-check-input:checked {
+  background-color: var(--dark);
+  border-color: var(--dark);
+}

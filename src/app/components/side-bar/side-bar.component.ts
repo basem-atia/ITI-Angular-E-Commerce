@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { SubcategoryService } from '../../services/subcategory.service';
+import { TCategory } from '../../types/TCategory';
+import { TSubcategory } from '../../types/TSubcategory';
 @Component({
   selector: 'app-side-bar',
   imports: [],
@@ -7,13 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './side-bar.component.css',
 })
 export class SideBarComponent {
-  tabs = [
-    'Electronics',
-    'Home & Lifestyle',
-    'Medicine',
-    'Sports & Outdoor',
-    "Baby's & Toys",
-    'Groceries & Pets',
-    'Health & Beauty',
-  ];
+  @Input({ required: true })
+  category!: TCategory;
+  subCategories!: { data: TSubcategory[] };
+
+  constructor(private subcategoryService: SubcategoryService) {}
+
+  ngOnInit() {
+    this.subcategoryService.getAllByCategoryId(this.category._id).subscribe({
+      next: (data) => (this.subCategories = data),
+    });
+  }
 }

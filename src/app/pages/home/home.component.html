@@ -1,26 +1,24 @@
 <div class="d-flex flex-column gap-5 py-5">
   @if(categories){ @for (category of categories.data; track $index) {
-  <div class="container shadow position-relative p-3">
+  <div class="container shadow p-3">
     <h3>{{ category.name }}</h3>
 
     <div class="p-3 d-flex flex-wrap justify-content-evenly gap-5">
-      @for (product of products; track $index) {
-      <app-product-card
-        productImg="{{ product.img }}"
-        badge="discount"
-        productName="{{ product.name }}"
-        price="{{ product.price }}"
-        oldPrice="{{ product.oldPrice }}"
-        discount="{{ product.discount }}"
-      ></app-product-card>
+      @for (product of category.someProducts; track $index) {
+      <app-product-card [product]="product"></app-product-card>
       }
       <div class="hidden-card"></div>
       <div class="hidden-card"></div>
       <div class="hidden-card"></div>
       <div class="hidden-card"></div>
     </div>
-    <div class="seeMore p-3" (click)="goToCategory(category._id)">
-      <h4>See more</h4>
+    <div class="d-flex">
+      <button
+        class="btn btn-main btn-view"
+        (click)="goToCategory(category._id, category.name)"
+      >
+        See more
+      </button>
     </div>
   </div>
 
