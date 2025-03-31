@@ -1,4 +1,4 @@
-<div class="d-flex flex-column gap-5 py-5">
+<div class="d-flex flex-column gap-5 py-4">
   @if(categories){ @for (category of categories.data; track $index) {
   <div class="container shadow p-3">
     <h3>{{ category.name }}</h3>
@@ -14,7 +14,7 @@
     </div>
     <div class="d-flex">
       <button
-        class="btn btn-main btn-view"
+        class="btn btn-dark btn-view"
         (click)="goToCategory(category._id, category.name)"
       >
         See more
@@ -22,5 +22,7 @@
     </div>
   </div>
 
-  } }
+  } } @else{
+  <app-loader></app-loader>
+  }
 </div>

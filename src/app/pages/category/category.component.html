@@ -1,6 +1,7 @@
 <div class="d-flex">
   <app-side-bar [category]="category"></app-side-bar>
   <div class="d-flex gap-5 flex-column pb-5 container">
+    @if (products) {
     <div class="p-3 d-flex flex-wrap justify-content-evenly gap-5">
       @for (product of products.data; track $index) {
       <app-product-card [product]="product"></app-product-card>
@@ -38,5 +39,8 @@
         </li>
       </ul>
     </nav>
+    } @else {
+    <app-loader></app-loader>
+    }
   </div>
 </div>

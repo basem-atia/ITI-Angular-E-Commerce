@@ -4,10 +4,11 @@ import { ProductCardComponent } from '../../components/product-card/product-card
 import { TCategory } from '../../types/TCategory';
 import { ProductService } from '../../services/product.service';
 import { TProduct } from '../../types/TProduct';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Component({
   selector: 'app-category',
-  imports: [SideBarComponent, ProductCardComponent],
+  imports: [SideBarComponent, ProductCardComponent, LoaderComponent],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })

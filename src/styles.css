@@ -44,3 +44,9 @@ input:focus {
   box-shadow: none !important;
   border-color: white !important;
 }
+.bg-main {
+  background-color: var(--main);
+}
+.border-main {
+  border-color: var(--main) !important;
+}
