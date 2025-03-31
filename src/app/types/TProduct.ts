@@ -7,7 +7,7 @@ export type TProduct = {
   description: string;
   deliveryIsFree: boolean;
   isUsed: boolean;
-  createdAt: Date;
+  createdAt: string;
   subCategoryId: {
     _id: string;
   };

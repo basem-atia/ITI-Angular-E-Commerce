@@ -1,0 +1,26 @@
+.list-group-item[data-bs-toggle="collapse"] i {
+  transition: transform 0.3s;
+}
+
+.list-group-item[data-bs-toggle="collapse"][aria-expanded="true"] i {
+  transform: rotate(90deg);
+}
+
+.w {
+  width: 230px;
+  min-height: 100vh;
+}
+i {
+  opacity: 0.5;
+}
+a {
+  width: 230px;
+  display: flex;
+}
+* {
+  text-transform: capitalize;
+}
+.form-check-input:checked {
+  background-color: var(--dark);
+  border-color: var(--dark);
+}

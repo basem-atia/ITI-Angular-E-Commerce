@@ -1,0 +1,71 @@
+<button
+  class="btn btn-outline-dark border-0 d-flex d-sm-none"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasWithBothOptions"
+  aria-controls="offcanvasWithBothOptions"
+>
+  <i class="bi bi-sliders2"></i>
+</button>
+
+<div
+  class="offcanvas offcanvas-start"
+  data-bs-scroll="true"
+  tabindex="-1"
+  id="offcanvasWithBothOptions"
+  aria-labelledby="offcanvasWithBothOptionsLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+      Backdrop with scrolling
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="list-group list-group-flush">
+      <a
+        class="list-group-item d-flex justify-content-around align-items-center border-0 w-100"
+        data-bs-toggle="collapse"
+        href="#collapseTab11"
+        role="button"
+        aria-expanded="true"
+        aria-controls="collapseTab11"
+      >
+        {{ category.name }}
+        <i class="bi bi-caret-right-fill ms-auto opacity-1"></i>
+      </a>
+      <div class="collapse show" id="collapseTab11">
+        <div class="form-check ps-5">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="subCategory1"
+            id="all1"
+            checked
+          />
+          <label class="form-check-label" for="all1"> All </label>
+        </div>
+        @if (subCategories) { @for (subCategory of subCategories.data; track
+        $index) {
+        <div class="form-check ps-5">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="subCategory1"
+            [id]="subCategory.name + '1'"
+          />
+          <label class="form-check-label" [for]="subCategory.name + '1'">
+            {{ subCategory.name }}
+          </label>
+        </div>
+
+        } }
+      </div>
+    </div>
+  </div>
+</div>

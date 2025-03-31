@@ -5,10 +5,16 @@ import { TCategory } from '../../types/TCategory';
 import { ProductService } from '../../services/product.service';
 import { TProduct } from '../../types/TProduct';
 import { LoaderComponent } from '../../components/loader/loader.component';
+import { MobileSideBarComponent } from '../../components/mobile-side-bar/mobile-side-bar.component';
 
 @Component({
   selector: 'app-category',
-  imports: [SideBarComponent, ProductCardComponent, LoaderComponent],
+  imports: [
+    SideBarComponent,
+    ProductCardComponent,
+    LoaderComponent,
+    MobileSideBarComponent,
+  ],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })

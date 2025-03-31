@@ -1,5 +1,6 @@
-<div class="d-flex">
+<div class="d-flex flex-column flex-sm-row">
   <app-side-bar [category]="category"></app-side-bar>
+  <app-mobile-side-bar [category]="category"></app-mobile-side-bar>
   <div class="d-flex gap-5 flex-column pb-5 container">
     @if (products) {
     <div class="p-3 d-flex flex-wrap justify-content-evenly gap-5">
