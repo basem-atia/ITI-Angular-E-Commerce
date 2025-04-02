@@ -6,6 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +17,6 @@ import {
 })
 export class LoginComponent {
   myForm = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.pattern('^[a-zA-Z]+$'),
-    ]),
     emailPhone: new FormControl('', [
       Validators.required,
       Validators.pattern(
@@ -34,4 +31,37 @@ export class LoginComponent {
       ),
     ]),
   });
+
+  serverMessage: string = '';
+  isSuccess: boolean = false;
+
+  //inject auth service and router in constructor
+  constructor(private authService: AuthService, private router: Router) {}
+
+  //login function
+  login() {
+    if (this.myForm.valid) {
+      this.authService.login(this.myForm.value).subscribe({
+        next: (res) => {
+          if (res && res.token) {
+            this.serverMessage = 'Login successful!';
+            this.isSuccess = true;
+            this.authService.saveToken(res.token);
+            setTimeout(() => this.router.navigate(['/']), 2000);
+          } else {
+            this.serverMessage = 'Login failed. Please try again.';
+            this.isSuccess = false;
+          }
+        },
+        error: (err) => {
+          this.serverMessage =
+            'Login failed. Please check your email/phone and password.';
+          this.isSuccess = false;
+        },
+      });
+    } else {
+      this.serverMessage = 'Please fill out the form correctly.';
+      this.isSuccess = false;
+    }
+  }
 }

@@ -7,6 +7,6 @@ import { CategoryComponent } from './pages/category/category.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'category/:id', component: CategoryComponent },
 ];

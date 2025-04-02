@@ -1,4 +1,4 @@
-<div class="container-fluid full-container">
+<div class="container-fluid full-container mt-0 mb-0">
   <div class="row justify-content-center align-items-center">
     <div class="left col-md-6 col-12">
       <div class="image"></div>
@@ -6,7 +6,7 @@
     <div class="right col-md-6 col-12">
       <h2>Log in to Exclusive</h2>
       <p class="below">Enter your details below</p>
-      <form [formGroup]="myForm" class="form">
+      <form [formGroup]="myForm" class="form" (ngSubmit)="login()">
         <div class="form-group">
           <input
             #emailPhone
@@ -48,8 +48,15 @@
           </span>
         </div>
 
+        <span
+          *ngIf="serverMessage"
+          [ngClass]="{ 'success-msg': isSuccess, 'error-msg': !isSuccess }"
+        >
+          {{ serverMessage }}
+        </span>
+
         <div>
-          <input class="log-in" type="button" value="Log In" />
+          <input class="log-in" type="submit" value="Log In" />
         </div>
       </form>
       <div class="forget-password">
