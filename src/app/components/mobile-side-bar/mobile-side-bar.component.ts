@@ -14,12 +14,13 @@ import { FormsModule } from '@angular/forms';
 import { TPrices } from '../../types/TPrices';
 import { CurrencyPipe } from '@angular/common';
 @Component({
-  selector: 'app-side-bar',
+  selector: 'app-mobile-side-bar',
   imports: [FormsModule, CurrencyPipe],
-  templateUrl: './side-bar.component.html',
-  styleUrl: './side-bar.component.css',
+  templateUrl: './mobile-side-bar.component.html',
+  styleUrl: './mobile-side-bar.component.css',
 })
-export class SideBarComponent {
+export class MobileSideBarComponent {
+  show: string = '';
   @Input({ required: true })
   isLoading: boolean = true;
   @Input({ required: true })
@@ -59,29 +60,34 @@ export class SideBarComponent {
   }
 
   clickRadio(e: Event) {
+    this.show = 'show';
     const target = e.target as HTMLInputElement;
     this.shippingIsFree = false;
     this.hasDiscount = false;
     this.userPrice = 0;
-    this.onClickRadio.emit(target.id);
+    this.onClickRadio.emit(target.value);
   }
   clickFreeShipping(e: Event) {
     const target = e.target as HTMLInputElement;
     this.userPrice = 0;
+    this.show = 'show';
 
     this.onClickFreeShipping.emit(target.checked);
   }
   clickDiscount(e: Event) {
+    this.show = 'show';
     this.userPrice = 0;
     const target = e.target as HTMLInputElement;
     this.onClickDiscount.emit(target.checked);
   }
   clickGoForPrice() {
+    this.show = '';
     this.onClickGoForPrice.emit(this.userPrice);
   }
   clickReset() {
     let radioAll = this.radioElementRef.nativeElement as HTMLInputElement;
     radioAll.checked = true;
+    this.show = 'show';
 
     this.shippingIsFree = false;
     this.hasDiscount = false;

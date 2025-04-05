@@ -1,7 +1,7 @@
-<div class="w h-100 bg-white shadow d-none d-sm-flex">
-  <div class="list-group list-group-flush">
+<div class="w h-100 bg-white shadow d-none d-sm-flex px-3">
+  <div class="list-group list-group-flush d-flex gap-2">
     <a
-      class="list-group-item d-flex justify-content-around align-items-center border-0"
+      class="list-group-item d-flex justify-content-around px-0 align-items-center border-0"
       data-bs-toggle="collapse"
       href="#collapseTab1"
       role="button"
@@ -18,7 +18,10 @@
           type="radio"
           name="subCategory"
           id="all"
-          checked
+          (click)="clickRadio($event)"
+          [checked]="selectedSubCategoryId === 'all'"
+          #radioElementRef
+          [disabled]="isLoading"
         />
         <label class="form-check-label" for="all"> All </label>
       </div>
@@ -29,14 +32,88 @@
           class="form-check-input"
           type="radio"
           name="subCategory"
-          [id]="subCategory.name"
+          [id]="subCategory._id"
+          [checked]="selectedSubCategoryId === subCategory._id"
+          (click)="clickRadio($event)"
+          [disabled]="isLoading"
         />
-        <label class="form-check-label" [for]="subCategory.name">
+        <label class="form-check-label" [for]="subCategory._id">
           {{ subCategory.name }}
         </label>
       </div>
 
       } }
     </div>
+    <hr class="border" />
+    <div class="form-check">
+      <input
+        class="form-check-input border"
+        type="checkbox"
+        id="FreeShipping"
+        (change)="clickFreeShipping($event)"
+        [(ngModel)]="shippingIsFree"
+        [disabled]="isLoading"
+      />
+      <label class="form-check-label" for="FreeShipping"> Free Shipping </label>
+    </div>
+    <hr class="border" />
+    <div class="form-check">
+      <input
+        class="form-check-input border"
+        type="checkbox"
+        id="Discount"
+        (change)="clickDiscount($event)"
+        [(ngModel)]="hasDiscount"
+        [disabled]="isLoading"
+      />
+      <label class="form-check-label" for="Discount"> Discount </label>
+    </div>
+    <hr class="border" />
+    <div class="form-check p-0 d-flex flex-column">
+      <label
+        for="customRange1 "
+        class="form-label d-flex justify-content-between"
+      >
+        <div>Price</div>
+        {{
+          (prices ? prices.min : "0")
+            | currency : "USD" : "symbol-narrow" : "1.0"
+        }}
+        -
+        {{
+          (userPrice && prices && prices.min
+            ? userPrice
+            : prices
+            ? prices.max
+            : "0"
+          ) | currency : "USD" : "symbol-narrow" : "1.0"
+        }}
+      </label>
+      <input
+        type="range"
+        [max]="prices ? prices.max : 10"
+        [min]="prices ? prices.min : 0"
+        class="form-range slider"
+        id="customRange1"
+        [disabled]="!(prices && prices.min) || isLoading"
+        [(ngModel)]="userPrice"
+      />
+      <button
+        class="btn btn-sm btn-outline-dark rounded-circle ms-auto mt-2 p-0 go"
+        [disabled]="!(userPrice && prices && prices.min) || isLoading"
+        (click)="clickGoForPrice()"
+      >
+        Go
+      </button>
+    </div>
+    <hr class="border" />
+
+    <button
+      class="btn btn-dark btn-sm"
+      [disabled]="isLoading"
+      (click)="clickReset()"
+    >
+      Reset
+    </button>
   </div>
 </div>

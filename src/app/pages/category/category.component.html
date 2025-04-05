@@ -1,9 +1,26 @@
-<div class="d-flex">
-  <app-side-bar [category]="category"></app-side-bar>
-  <div class="d-flex gap-5 flex-column pb-5 container">
-    @if (products) {
+<div class="d-flex flex-column flex-sm-row">
+  <app-side-bar
+    [category]="category"
+    (onClickRadio)="onClickRadio($event)"
+    (onClickFreeShipping)="onClickFreeShipping($event)"
+    (onClickDiscount)="onClickDiscount($event)"
+    (onClickGoForPrice)="onClickGoForPrice($event)"
+    [prices]="prices"
+    [isLoading]="!!(products&&!products.length&&numberOfPages)"
+  ></app-side-bar>
+  <app-mobile-side-bar 
+  [category]="category"
+  (onClickRadio)="onClickRadio($event)"
+  (onClickFreeShipping)="onClickFreeShipping($event)"
+  (onClickDiscount)="onClickDiscount($event)"
+  (onClickGoForPrice)="onClickGoForPrice($event)"
+  [prices]="prices"
+  [isLoading]="!!(products&&!products.length&&numberOfPages)"
+  ></app-mobile-side-bar>
+  <div class="d-flex gap-5 flex-column pb-5 container page">
+    @if (products.length) {
     <div class="p-3 d-flex flex-wrap justify-content-evenly gap-5">
-      @for (product of products.data; track $index) {
+      @for (product of products; track $index) {
       <app-product-card [product]="product"></app-product-card>
       }
       <div class="hidden-card"></div>
@@ -12,34 +29,55 @@
       <div class="hidden-card"></div>
     </div>
 
-    <nav aria-label="Page navigation example ">
-      <ul class="pagination d-flex justify-content-center">
-        <li class="page-item rounded-start-2">
-          <a class="page-link link-dark border-end-0" href="#">Previous</a>
-        </li>
-        @for (page of pages; track $index) {
-        <li class="page-item">
-          <a
-            class="page-link link-dark border-0 border-top border-bottom"
-            href="#"
-            >{{ $index + 1 }}</a
-          >
-        </li>
+    <nav class="d-flex flex-wrap gap-5">
+      <div class="me-auto d-flex gap-2 align-items-center invisible">
+        page<input
+          [value]="pageNumber"
+          class="form-control border form-control-sm"
+          type="number"
+        />
+        <div>of {{ numberOfPages }}</div>
+      </div>
+      <div class="m-auto">
+        @if(pageNumber>1){
+        <button
+          title="Previous page"
+          class="btn-previous btn btn-outline-success me-5"
+          (click)="onClickPrevious()"
+        >
+          <i class="bi bi-arrow-left"></i>
+        </button>
         }
-        <li class="page-item rounded-end-2">
-          <a class="page-link link-dark border-start-0" href="#">...</a>
-        </li>
-        <li class="page-item rounded-end-2">
-          <a class="page-link border-start-0 disabled bg-white" href="#">{{
-            numberOfPages
-          }}</a>
-        </li>
-        <li class="page-item rounded-end-2">
-          <a class="page-link link-dark border-start-0" href="#">Next</a>
-        </li>
-      </ul>
+        @if(pageNumber<numberOfPages){
+          <button
+          title="Next page"
+          class="btn-next btn btn-success"
+          (click)="onClickNext()"
+        >
+          Next Page <i class="bi bi-arrow-right"></i>
+        </button>
+          }
+       
+      </div>
+      <form class="m-auto m-md-0 ms-md-auto d-flex gap-2 align-items-center" (submit)="onSubmitSearch($event)">
+        Page<input
+          [value]="pageNumber"
+          class="form-control border form-control-sm"
+          type="number"
+          (change)="onChangePageNumber($event)"
+          [max]="numberOfPages"
+          min="1"
+        />
+        <div>of {{ numberOfPages }}</div>
+      </form>
     </nav>
-    } @else {
+    }@else if(numberOfPages==0) {
+      <div class=" h-100  d-flex flex-column noProduct text-center">
+        No results
+    
+      </div>  
+    } 
+    @else {
     <app-loader></app-loader>
     }
   </div>

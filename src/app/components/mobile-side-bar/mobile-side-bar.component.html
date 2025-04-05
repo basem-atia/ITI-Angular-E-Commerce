@@ -1,0 +1,143 @@
+<button
+  class="btn btn-sm btn-outline-secondary d-flex d-sm-none m-3"
+  type="button"
+  (click)="show = 'show'"
+>
+  <i class="bi bi-sliders me-2"></i> Filter
+</button>
+
+<div class="offcanvas offcanvas-start" [class]="show">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filters</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      (click)="show = ''"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="list-group list-group-flush d-flex gap-2">
+      <a
+        class="list-group-item d-flex justify-content-around px-0 align-items-center border-0"
+        data-bs-toggle="collapse"
+        href="#collapseTab1"
+        role="button"
+        aria-expanded="true"
+        aria-controls="collapseTab1"
+      >
+        {{ category.name }}
+        <i class="bi bi-caret-right-fill ms-auto opacity-1"></i>
+      </a>
+      <div class="collapse show" id="collapseTab12">
+        <div class="form-check ps-5">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="subCategory"
+            id="all2"
+            (click)="clickRadio($event)"
+            [checked]="selectedSubCategoryId === 'all'"
+            #radioElementRef
+            [disabled]="isLoading"
+            value="all"
+          />
+          <label class="form-check-label" for="all2"> All </label>
+        </div>
+        @if (subCategories) { @for (subCategory of subCategories.data; track
+        $index) {
+        <div class="form-check ps-5">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="subCategory"
+            [id]="subCategory._id + '1'"
+            [checked]="selectedSubCategoryId === subCategory._id"
+            (click)="clickRadio($event)"
+            [disabled]="isLoading"
+            [value]="subCategory._id"
+          />
+          <label class="form-check-label" [for]="subCategory._id + '1'">
+            {{ subCategory.name }}
+          </label>
+        </div>
+
+        } }
+      </div>
+      <hr class="border" />
+      <div class="form-check">
+        <input
+          class="form-check-input border"
+          type="checkbox"
+          id="FreeShipping2"
+          (change)="clickFreeShipping($event)"
+          [(ngModel)]="shippingIsFree"
+          [disabled]="isLoading"
+        />
+        <label class="form-check-label" for="FreeShipping2">
+          Free Shipping
+        </label>
+      </div>
+      <hr class="border" />
+      <div class="form-check">
+        <input
+          class="form-check-input border"
+          type="checkbox"
+          id="Discount2"
+          (change)="clickDiscount($event)"
+          [(ngModel)]="hasDiscount"
+          [disabled]="isLoading"
+        />
+        <label class="form-check-label" for="Discount2"> Discount </label>
+      </div>
+      <hr class="border" />
+      <div class="form-check p-0 d-flex flex-column">
+        <label
+          for="customRange12"
+          class="form-label d-flex justify-content-between"
+        >
+          <div>Price</div>
+          {{
+            (prices ? prices.min : "0")
+              | currency : "USD" : "symbol-narrow" : "1.0"
+          }}
+          -
+          {{
+            (userPrice && prices && prices.min
+              ? userPrice
+              : prices
+              ? prices.max
+              : "0"
+            ) | currency : "USD" : "symbol-narrow" : "1.0"
+          }}
+        </label>
+        <input
+          type="range"
+          [max]="prices ? prices.max : 10"
+          [min]="prices ? prices.min : 0"
+          class="form-range slider"
+          id="customRange12"
+          [disabled]="!(prices && prices.min) || isLoading"
+          [(ngModel)]="userPrice"
+        />
+      </div>
+      <hr class="border" />
+      <button
+        class="btn btn-sm btn-outline-dark"
+        [disabled]="isLoading || show == ''"
+        (click)="clickGoForPrice()"
+      >
+        @if(isLoading){
+        <div class="spinner-border spinner-border-sm" role="status"></div>
+        } @else {Go}
+      </button>
+      <button
+        class="btn btn-dark btn-sm"
+        [disabled]="isLoading"
+        (click)="clickReset()"
+      >
+        Reset
+      </button>
+    </div>
+  </div>
+</div>

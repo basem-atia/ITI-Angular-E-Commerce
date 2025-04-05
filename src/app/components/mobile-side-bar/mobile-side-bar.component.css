@@ -14,7 +14,7 @@ i {
   opacity: 0.5;
 }
 a {
-  width: 200px;
+  width: 100%;
   display: flex;
 }
 * {
@@ -38,8 +38,4 @@ a {
 .slider:focus::-webkit-slider-thumb {
   cursor: pointer;
   box-shadow: none;
-}
-.go {
-  width: 35px;
-  height: 35px;
 }

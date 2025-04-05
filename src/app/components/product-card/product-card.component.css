@@ -51,7 +51,7 @@ img {
   margin-left: auto;
 }
 .discount {
-  background-color: var(--main);
+  background-color: var(--darkGray);
 }
 .icon-container .btn {
   width: 34px;
@@ -103,4 +103,44 @@ img {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+}
+.shipping {
+  background-image: url("/icons/shipping.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+.shipping div {
+  background-color: var(--main);
+  top: 12px;
+  left: 12px;
+  width: 24px;
+  height: 14px;
+  font-size: 13px;
+  position: absolute;
+  color: #f6f7f9;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.free-shipping {
+  background-image: url("/icons/free-shipping.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+}
+.free-shipping div {
+  display: none;
 }
