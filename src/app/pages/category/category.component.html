@@ -8,16 +8,34 @@
     [prices]="prices"
     [isLoading]="!!(products&&!products.length&&numberOfPages)"
   ></app-side-bar>
-  <app-mobile-side-bar 
-  [category]="category"
-  (onClickRadio)="onClickRadio($event)"
-  (onClickFreeShipping)="onClickFreeShipping($event)"
-  (onClickDiscount)="onClickDiscount($event)"
-  (onClickGoForPrice)="onClickGoForPrice($event)"
-  [prices]="prices"
-  [isLoading]="!!(products&&!products.length&&numberOfPages)"
-  ></app-mobile-side-bar>
+  
+ 
   <div class="d-flex gap-5 flex-column pb-5 container page">
+    <nav class="navbar">
+      <app-mobile-side-bar 
+        [category]="category"
+        (onClickRadio)="onClickRadio($event)"
+        (onClickFreeShipping)="onClickFreeShipping($event)"
+        (onClickDiscount)="onClickDiscount($event)"
+        (onClickGoForPrice)="onClickGoForPrice($event)"
+        [prices]="prices"
+        [isLoading]="!!(products&&!products.length&&numberOfPages)"
+      ></app-mobile-side-bar>
+  
+  
+      <div class="btn-group">
+        <label for="" class="text-secondary me-2">Sort by:
+        </label>
+        <div class="  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{sortType}}
+        </div>
+        <ul class="dropdown-menu dropdown-menu-end">
+          @for (item of sortTypes; track $index) {
+            <li><a class="dropdown-item {{item==sortType?'active ':''}}" (click)="onClickSortItem(item)" >{{item}}</a></li>
+          }
+        </ul>
+      </div>
+    </nav>
     @if (products.length) {
     <div class="p-3 d-flex flex-wrap justify-content-evenly gap-5">
       @for (product of products; track $index) {

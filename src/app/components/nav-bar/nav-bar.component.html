@@ -51,6 +51,7 @@
           placeholder="Find it faster with a search"
           aria-label="Search"
           (change)="onChangeSearch($event)"
+          [value]="searchText"
         />
         <div class="btn-search border">
           <button
@@ -104,12 +105,18 @@
           }
         </ul>
       </div>
-      <form class="d-flex w-100 border-0" role="search">
+      <form
+        class="d-flex w-100 border-0"
+        role="search"
+        (submit)="onSubmitSearch($event)"
+      >
         <input
           class="form-control border-0 w-100 bg-light"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          (change)="onChangeSearch($event)"
+          [value]="searchText"
         />
         <i class="bi bi-search bi-sm h-100"></i>
       </form>

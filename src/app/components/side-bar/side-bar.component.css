@@ -43,3 +43,9 @@ a {
   width: 35px;
   height: 35px;
 }
+.app-filter-btn-close {
+  font-size: 8px;
+}
+.btn-filter {
+  width: max-content;
+}

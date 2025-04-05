@@ -26,6 +26,7 @@
 }
 .dropdown-toggle {
   background-color: rgb(60 66 72);
+  text-transform: capitalize;
 }
 .btn-search {
   display: flex;
@@ -56,6 +57,7 @@
 }
 .dropdown-item {
   cursor: pointer;
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 990px) {

@@ -4,9 +4,11 @@ import { LogoComponent } from '../logo/logo.component';
 import { CategoryService } from '../../services/category.service';
 import { TCategory } from '../../types/TCategory';
 import { ResetFilterService } from '../../services/reset-filter.service';
+import { StorageKeys } from '../../constant';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-nav-bar',
-  imports: [RouterModule, LogoComponent],
+  imports: [RouterModule, LogoComponent, FormsModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })
@@ -45,15 +47,15 @@ export class NavBarComponent {
   };
   onSubmitSearch(e: Event) {
     this.reset.resetFilter();
+    sessionStorage.setItem(StorageKeys.SSearchText, this.searchText);
     e.preventDefault();
-    if (this.searchText) {
-    } else {
-      this.router.navigateByUrl(`category/${this.selectedCategory._id}`, {
-        state: {
-          categoryId: this.selectedCategory._id,
-          categoryName: this.selectedCategory.name,
-        },
-      });
-    }
+    this.searchText = '';
+
+    this.router.navigateByUrl(`category/${this.selectedCategory._id}`, {
+      state: {
+        categoryId: this.selectedCategory._id,
+        categoryName: this.selectedCategory.name,
+      },
+    });
   }
 }

@@ -35,3 +35,16 @@ input:focus {
   font-size: 50px;
   color: #d6d5d5;
 }
+.dropdown-item {
+  cursor: pointer;
+}
+.dropdown-item:active,
+.active {
+  background-color: #a2a4a8 !important;
+}
+.btn-group {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

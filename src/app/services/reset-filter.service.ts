@@ -12,5 +12,6 @@ export class ResetFilterService {
     sessionStorage.removeItem(StorageKeys.shippingIsFree);
     sessionStorage.removeItem(StorageKeys.SHasDiscount);
     sessionStorage.removeItem(StorageKeys.SUserPrice);
+    sessionStorage.removeItem(StorageKeys.SSearchText);
   };
 }

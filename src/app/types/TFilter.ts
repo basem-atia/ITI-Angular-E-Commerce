@@ -7,4 +7,6 @@ export type TFilter =
       freeShapping: boolean;
       hasDiscount: boolean;
       userMaxPrice: number;
+      searchText: string;
+      sortedBy: string;
     };

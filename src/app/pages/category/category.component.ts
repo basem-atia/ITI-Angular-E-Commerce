@@ -9,7 +9,6 @@ import { MobileSideBarComponent } from '../../components/mobile-side-bar/mobile-
 import { Router } from '@angular/router';
 import { TFilter } from '../../types/TFilter';
 import { StorageKeys } from '../../constant';
-import { ResetFilterService } from '../../services/reset-filter.service';
 import { TPrices } from '../../types/TPrices';
 
 @Component({
@@ -35,11 +34,9 @@ export class CategoryComponent {
   products: TProduct[] = [];
   filter: TFilter = undefined;
   prices!: TPrices;
-  constructor(
-    private producService: ProductService,
-    private router: Router,
-    private reset: ResetFilterService
-  ) {}
+  sortType: string = sessionStorage.getItem(StorageKeys.SSortedBy) || 'Recent';
+  sortTypes = ['Recent', 'Price'];
+  constructor(private producService: ProductService, private router: Router) {}
 
   ngOnInit() {
     this.pageNumber = Number.parseInt(
@@ -52,6 +49,7 @@ export class CategoryComponent {
       page: Number.parseInt(sessionStorage.getItem(StorageKeys.Spage) || '1'),
       categoryId: this.category._id,
       subCategoryId: SFilterSubCategoryId || '',
+      searchText: sessionStorage.getItem(StorageKeys.SSearchText) || '',
       freeShapping:
         sessionStorage.getItem(StorageKeys.shippingIsFree) == 'true',
       hasDiscount:
@@ -59,10 +57,15 @@ export class CategoryComponent {
       userMaxPrice: Number.parseInt(
         sessionStorage.getItem(StorageKeys.SUserPrice) || '0'
       ),
+      sortedBy: sessionStorage.getItem(StorageKeys.SSortedBy) || 'Recent',
     };
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
-    if (this.filter?.subCategoryId == '' && this.filter.freeShapping == false) {
+    if (
+      this.filter?.subCategoryId == '' &&
+      this.filter.freeShapping == false &&
+      !this.filter.searchText
+    ) {
       this.producService
         .getAllByCategoryId(this.category._id, this.pageNumber)
         .subscribe({
@@ -83,7 +86,7 @@ export class CategoryComponent {
     }
   }
   onClickRadio = (id: string) => {
-    this.reset.resetFilter();
+    sessionStorage.removeItem(StorageKeys.SUserPrice);
     sessionStorage.setItem(StorageKeys.SFilterSubCategoryId, id);
     sessionStorage.setItem(StorageKeys.Spage, '1');
     this.pageNumber = 1;
@@ -91,6 +94,7 @@ export class CategoryComponent {
       categoryId: this.category._id,
       subCategoryId: id,
       page: 1,
+      searchText: sessionStorage.getItem(StorageKeys.SSearchText) || '',
       freeShapping:
         sessionStorage.getItem(StorageKeys.shippingIsFree) == 'true',
       userMaxPrice: Number.parseInt(
@@ -98,6 +102,7 @@ export class CategoryComponent {
       ),
       hasDiscount:
         sessionStorage.getItem(StorageKeys.SFilterSubCategoryId) == 'true',
+      sortedBy: sessionStorage.getItem(StorageKeys.SSortedBy) || 'Recent',
     };
     this.products = [];
     if (id) this.filterProducts(false);
@@ -115,14 +120,15 @@ export class CategoryComponent {
     sessionStorage.setItem(StorageKeys.SUserPrice, price.toString());
     if (this.filter) this.filter.userMaxPrice = price;
     this.filterProducts(false);
-    ///////////////
   };
   onClickPageNumber = (pNum: number) => {
     this.pageNumber = pNum;
     sessionStorage.setItem(StorageKeys.Spage, pNum.toString());
     this.products = [];
     if (this.filter) this.filter.page = pNum;
-    this.filterProducts(this.filter?.subCategoryId == '');
+    this.filterProducts(
+      this.filter?.subCategoryId == '' && !this.filter.searchText
+    );
   };
   onClickPrevious = () => {
     this.onClickPageNumber(this.pageNumber - 1);
@@ -172,10 +178,15 @@ export class CategoryComponent {
         sessionStorage.getItem(StorageKeys.SHasDiscount) == 'true';
       this.filter.freeShapping =
         sessionStorage.getItem(StorageKeys.shippingIsFree) == 'true';
-
       this.filter.page = 1;
     }
 
+    this.filterProducts(false);
+  };
+  onClickSortItem = (type: string) => {
+    this.sortType = type;
+    sessionStorage.setItem(StorageKeys.SSortedBy, this.sortType);
+    if (this.filter) this.filter.sortedBy = type;
     this.filterProducts(false);
   };
 }
