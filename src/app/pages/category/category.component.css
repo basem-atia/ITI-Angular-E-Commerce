@@ -1,0 +1,37 @@
+.btn-previous {
+  border-color: var(--main);
+  color: var(--main);
+  background-color: white;
+}
+.btn-next {
+  border-color: var(--main);
+  background-color: var(--main);
+  color: white;
+}
+.btn-next:hover {
+  border-color: #c13d3d;
+  background-color: #c13d3d;
+  color: white;
+}
+
+.btn-previous:hover {
+  background-color: #fae7e7;
+}
+.form-control {
+  width: 60px;
+}
+input:focus {
+  border-color: var(--main) !important;
+}
+.noProduct {
+  margin: auto;
+  background-image: url("/images/noProduct.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100vh;
+  padding-top: 50px;
+  width: 40%;
+  font-size: 50px;
+  color: #d6d5d5;
+}

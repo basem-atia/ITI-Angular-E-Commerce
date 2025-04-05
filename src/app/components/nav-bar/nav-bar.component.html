@@ -1,5 +1,5 @@
 <nav
-  class="navbar navbar-expand-lg bg-body-tertiary sticky-top py-lg-1  py-0 {{
+  class="navbar navbar-expand-lg bg-body-tertiary sticky-top py-lg-1  py-0 pt-1 {{
     hide ? 'd-none' : 'd-flex'
   }}"
   data-bs-theme="dark"
@@ -10,7 +10,11 @@
     <div
       class="mx-auto d-flex gap-1 w-100 container-search border-0 d-lg-flex d-none"
     >
-      <form class="d-flex w-100" role="search">
+      <form
+        class="d-flex w-100"
+        role="search"
+        (submit)="onSubmitSearch($event)"
+      >
         <div class="dropdown">
           <button
             type="button "
@@ -18,12 +22,27 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Electronics
+            @if (!selectedCategory) {
+            <div
+              class="spinner-border spinner-border-sm text-light me-4"
+              role="status"
+            ></div>
+            } @else {
+
+            {{ selectedCategory.name }}
+            }
           </button>
           <ul class="dropdown-menu rounded-0">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            @for (category of categories.data; track $index) {
+            <li>
+              <span
+                class="dropdown-item"
+                (click)="onSelectCategory(category)"
+                >{{ category.name }}</span
+              >
+            </li>
+
+            }
           </ul>
         </div>
         <input
@@ -31,39 +50,58 @@
           type="search"
           placeholder="Find it faster with a search"
           aria-label="Search"
+          (change)="onChangeSearch($event)"
         />
         <div class="btn-search border">
           <button
             class="btn btn-outline-light btn-sm rounded-0 w-100 fw-bold border-0"
+            type="submit"
           >
             <i class="bi bi-search h-100"></i>
           </button>
         </div>
       </form>
     </div>
+    @if (!isUser) {
     <div>
       <button class="btn btn-sm btn-outline-light me-1" routerLink="signup">
         Sign up
       </button>
       <button class="btn btn-sm btn-light" routerLink="login">Log in</button>
     </div>
+    } @else { <span class="text-light">user Name</span> }
   </div>
   <nav
-    class="navbar navbar-expand-lg bg-light flex-nowrap d-flex d-lg-none shadow border-top justify-content-center w-100"
+    class="navbar navbar-expand-lg bg-light flex-nowrap d-flex d-lg-none shadow border-top justify-content-center w-100 mt-1"
     data-bs-theme="light"
   >
     <div class="mx-auto d-flex gap-1 w-100 container-search border">
       <div class="">
         <button
           type="button"
-          class="btn btn-light dropdown-toggle w-100 border-0 border-end rounded-0"
+          class="btn btn-light dropdown-toggle dropdown-sm border-0 border-end rounded-0"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Electronics
+          @if (!selectedCategory) {
+          <div
+            class="spinner-border spinner-border-sm me-4"
+            role="status"
+          ></div>
+          } @else {
+
+          {{ selectedCategory.name }}
+          }
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
+          @for (category of categories.data; track $index) {
+          <li>
+            <span class="dropdown-item" (click)="onSelectCategory(category)">{{
+              category.name
+            }}</span>
+          </li>
+
+          }
         </ul>
       </div>
       <form class="d-flex w-100 border-0" role="search">

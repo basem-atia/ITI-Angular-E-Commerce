@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { RatingComponent } from '../rating/rating.component';
 import { TProduct } from '../../types/TProduct';
 @Component({
   selector: 'app-product-card',
-  imports: [CurrencyPipe, RatingComponent],
+  imports: [CurrencyPipe],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',
 })
