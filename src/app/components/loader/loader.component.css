@@ -1,0 +1,14 @@
+canvas {
+  height: 200px;
+}
+div {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 600px) {
+  canvas {
+    height: 170px;
+  }
+}

@@ -1,8 +1,8 @@
-a{
+a {
   text-decoration: none;
   color: black;
 }
-span{
+span {
   color: #db4444;
   font-weight: 700;
 }
@@ -16,4 +16,16 @@ span{
 .payment-icons i {
   font-size: 20px;
   margin-left: 10px;
+}
+img {
+  max-height: 65px;
+}
+input[type="radio"] {
+  border: 0.1px solid rgb(121, 121, 121);
+}
+input[type="radio"]:active {
+  border: none;
+}
+.placeOrder {
+  width: 25rem !important;
 }

@@ -1,0 +1,6 @@
+.SocialMedia{
+    display: flex;
+}
+.SocialMedia i{
+    margin: 5px;
+}

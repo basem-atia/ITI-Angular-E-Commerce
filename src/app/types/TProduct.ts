@@ -5,9 +5,8 @@ export type TProduct = {
   price: number;
   image: string;
   description: string;
-  deliveryIsFree: boolean;
-  isUsed: boolean;
-  createdAt: Date;
+  shipping: number;
+  createdAt: string;
   subCategoryId: {
     _id: string;
   };

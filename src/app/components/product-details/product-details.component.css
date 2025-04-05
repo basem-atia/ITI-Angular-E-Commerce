@@ -1,0 +1,22 @@
+.product-image {
+    max-width: 100%;
+    background-color: gainsboro;
+}
+.thumbnail img {
+    width: 100%;
+    cursor: pointer;
+}
+.thumbnail {
+    margin-bottom: 10px;
+    background-color: gainsboro;
+}
+.color-option {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.color-white { background: white; border: 1px solid #000; }
+.color-red { background: red; }

@@ -4,6 +4,8 @@
   --dark: #2b3035;
   /* --main: #c29613; */
   --light: #f8f9fa;
+
+  --darkGray: rgb(60 66 72);
 }
 .text-main {
   color: var(--main);
@@ -43,4 +45,14 @@
 input:focus {
   box-shadow: none !important;
   border-color: white !important;
+}
+.bg-main {
+  background-color: var(--main);
+}
+.border-main {
+  border-color: var(--main) !important;
+}
+.page {
+  min-height: 100vh;
+  justify-content: space-between;
 }

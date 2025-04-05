@@ -1,0 +1,16 @@
+a {
+  text-decoration: none;
+  color: #fff;
+}
+p {
+  transition: all 0.3s;
+}
+p:hover {
+  transform: translatex(5px);
+}
+.z-101 {
+  z-index: 101;
+}
+.scale-9 {
+  transform: scale(0.8);
+}

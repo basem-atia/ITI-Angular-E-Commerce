@@ -1,8 +1,66 @@
-<div class="w h-100 bg-white shadow d-none d-sm-flex">
-  <div class="list-group list-group-flush">
-    <!-- First collapsible tab -->
+<div class="w h-100 bg-white shadow d-none d-sm-flex px-3">
+  <div class="list-group list-group-flush d-flex gap-2">
     <a
-      class="list-group-item d-flex justify-content-around align-items-center border-0"
+      class="list-group-item d-flex justify-content-around px-0 align-items-center border-0"
+      data-bs-toggle="collapse"
+      href="#collapseTab12"
+      role="button"
+      aria-expanded="true"
+      aria-controls="collapseTab12"
+    >
+      Applied filters
+      <i class="bi bi-caret-right-fill ms-auto opacity-1"></i>
+    </a>
+    <div class="collapse show gap-2 flex-wrap" id="collapseTab12">
+      <!-- ------------------------------------------------------------------------------- -->
+      <!-- 0-> selectedSubCategoryId 2-> shippingIsFree 1-> hasDiscount 3-> submittedprice 4-> search text  -->
+      @for (filter of filters; track $index) {
+      <button
+        type="button"
+        class="btn btn-filter  btn-light border btn-sm mb-2 me-2 {{
+          (selectedSubCategoryId == 'all' && $index == 0) ||
+          (!shippingIsFree && $index == 2) ||
+          (!hasDiscount && $index == 1) ||
+          (!submittedprice && $index == 3) ||
+          (!searchText && $index == 4)
+            ? 'd-none'
+            : ''
+        }}"
+      >
+        {{
+          $index == 0 && selectedSubCategoryName != "all"
+            ? selectedSubCategoryName
+            : $index == 2 && shippingIsFree
+            ? "Free Shipping"
+            : hasDiscount && $index == 1
+            ? "Discount"
+            : submittedprice && $index == 3
+            ? "Max price: " + submittedprice
+            : searchText && $index == 4
+            ? searchText
+            : ""
+        }}
+        <button
+          class="btn-close app-filter-btn-close btn-sm"
+          (click)="clickDeleteFilter($index)"
+        ></button>
+      </button>
+      } @if( selectedSubCategoryId == 'all' && !shippingIsFree
+      &&!hasDiscount&&!submittedprice &&!searchText){
+      <div class="text-center text-secondary">No filters</div>
+      }@else {<button
+        class="btn btn-outline-dark btn-sm w-100"
+        [disabled]="isLoading"
+        (click)="clickReset()"
+      >
+        Clear all
+      </button>
+      }
+      <!-- ------------------------------------------------------------------------------- -->
+    </div>
+    <hr class="border" />
+    <a
+      class="list-group-item d-flex justify-content-around px-0 align-items-center border-0"
       data-bs-toggle="collapse"
       href="#collapseTab1"
       role="button"
@@ -17,9 +75,12 @@
         <input
           class="form-check-input"
           type="radio"
-          name="subCategory"
+          name="subCategory1"
           id="all"
-          checked
+          (click)="clickRadio($event)"
+          [checked]="selectedSubCategoryId === 'all'"
+          #radioElementRef
+          [disabled]="isLoading"
         />
         <label class="form-check-label" for="all"> All </label>
       </div>
@@ -29,15 +90,80 @@
         <input
           class="form-check-input"
           type="radio"
-          name="subCategory"
-          [id]="subCategory.name"
+          name="subCategory1"
+          [id]="subCategory._id"
+          [checked]="selectedSubCategoryId === subCategory._id"
+          (click)="clickRadio($event)"
+          [disabled]="isLoading"
         />
-        <label class="form-check-label" [for]="subCategory.name">
+        <label class="form-check-label" [for]="subCategory._id">
           {{ subCategory.name }}
         </label>
       </div>
 
       } }
+    </div>
+    <hr class="border" />
+    <div class="form-check">
+      <input
+        class="form-check-input border"
+        type="checkbox"
+        id="FreeShipping"
+        (change)="clickFreeShipping($event)"
+        [(ngModel)]="shippingIsFree"
+        [disabled]="isLoading"
+      />
+      <label class="form-check-label" for="FreeShipping"> Free Shipping </label>
+    </div>
+    <hr class="border" />
+    <div class="form-check">
+      <input
+        class="form-check-input border"
+        type="checkbox"
+        id="Discount"
+        (change)="clickDiscount($event)"
+        [(ngModel)]="hasDiscount"
+        [disabled]="isLoading"
+      />
+      <label class="form-check-label" for="Discount"> Discount </label>
+    </div>
+    <hr class="border" />
+    <div class="form-check p-0 d-flex flex-column">
+      <label
+        for="customRange1 "
+        class="form-label d-flex justify-content-between"
+      >
+        <div>Price</div>
+        {{
+          (prices ? prices.min : "0")
+            | currency : "USD" : "symbol-narrow" : "1.0"
+        }}
+        -
+        {{
+          (userPrice && prices && prices.min
+            ? userPrice
+            : prices
+            ? prices.max
+            : "0"
+          ) | currency : "USD" : "symbol-narrow" : "1.0"
+        }}
+      </label>
+      <input
+        type="range"
+        [max]="prices ? prices.max : 10"
+        [min]="prices ? prices.min : 0"
+        class="form-range slider"
+        id="customRange1"
+        [disabled]="!(prices && prices.min) || isLoading"
+        [(ngModel)]="userPrice"
+      />
+      <button
+        class="btn btn-sm btn-outline-dark rounded-circle ms-auto mt-2 p-0 go"
+        [disabled]="!(userPrice && prices && prices.min) || isLoading"
+        (click)="clickGoForPrice()"
+      >
+        Go
+      </button>
     </div>
   </div>
 </div>

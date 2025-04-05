@@ -8,18 +8,44 @@
 
 .w {
   width: 230px;
+  min-height: 100vh;
 }
 i {
   opacity: 0.5;
 }
 a {
-  width: 230px;
+  width: 200px;
   display: flex;
 }
 * {
   text-transform: capitalize;
 }
 .form-check-input:checked {
-  background-color: var(--dark);
-  border-color: var(--dark);
+  background-color: var(--darkGray);
+  border-color: var(--darkGray);
+}
+.form-check-input:focus {
+  border-color: #e6e9ec !important;
+}
+.slider::-webkit-slider-thumb {
+  background-color: var(--darkGray);
+  cursor: pointer;
+}
+.slider::-webkit-slider {
+  background-color: var(--darkGray);
+  cursor: pointer;
+}
+.slider:focus::-webkit-slider-thumb {
+  cursor: pointer;
+  box-shadow: none;
+}
+.go {
+  width: 35px;
+  height: 35px;
+}
+.app-filter-btn-close {
+  font-size: 8px;
+}
+.btn-filter {
+  width: max-content;
 }

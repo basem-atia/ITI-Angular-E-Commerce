@@ -1,0 +1,21 @@
+i{
+    border: 5px black solid;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    transition: all 2s;
+    margin-bottom: 10px;
+}
+
+h5{
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.item:hover i{
+    background-color: White;
+    color: black;
+    border: 5px rgba(110, 109, 109, 0.286) solid;
+    padding: 15px;
+}
