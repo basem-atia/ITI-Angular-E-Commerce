@@ -1,0 +1,42 @@
+.item{
+    border: solid 1px black;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    transition: all 2s;
+}
+
+.item:hover{
+    background-color: #DB4444;
+    color: white;
+    border: none;
+}
+
+.item:hover i{
+    background-color: White;
+    color: black;
+    border: 7px rgba(110, 109, 109, 0.286) solid;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+i{
+    border: 2px black solid;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    transition: all 2s;
+}
+
+i:hover{
+    border: 10px gray solid;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+h2{
+    font-weight: 600;
+}

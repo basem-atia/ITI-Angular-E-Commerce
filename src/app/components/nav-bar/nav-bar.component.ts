@@ -18,6 +18,7 @@ export class NavBarComponent {
   categories: { data: TCategory[] } = { data: [] };
   selectedCategory!: TCategory;
   searchText: string = '';
+  user: any = '';
   constructor(
     private router: Router,
     private categoryService: CategoryService,
@@ -36,7 +37,8 @@ export class NavBarComponent {
           eventString.includes('login') || eventString.includes('signup');
       }
     });
-    this.isUser = localStorage.getItem('token') ? true : false;
+    this.isUser = localStorage.getItem(StorageKeys.LToken) ? true : false;
+    this.user = JSON.parse(localStorage.getItem(StorageKeys.LUser) || '') || '';
   }
   onSelectCategory = (category: TCategory) => {
     this.selectedCategory = category;
@@ -58,4 +60,7 @@ export class NavBarComponent {
       },
     });
   }
+  goToAcount = () => {
+    this.router.navigateByUrl('/account');
+  };
 }

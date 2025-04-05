@@ -10,4 +10,6 @@ export const StorageKeys = {
   SUserPrice: 'SUserPrice',
   SSearchText: 'SSearchText',
   SSortedBy: 'SSortedBy',
+  LToken: 'authtoken',
+  LUser: 'user',
 };

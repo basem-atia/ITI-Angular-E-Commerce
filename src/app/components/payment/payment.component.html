@@ -1,0 +1,20 @@
+<div class="payment-container mt-5 mb-5">
+  <div id="card-element" class="w-100 mb-5"></div>
+  <div id="card-errors" role="alert"></div>
+
+  <button
+    (click)="handlePayment()"
+    [disabled]="isProcessing"
+    class="btn btn-danger w-25"
+  >
+    Pay
+  </button>
+
+  <div *ngIf="paymentError" class="error-message">
+    <p>{{ paymentError }}</p>
+  </div>
+
+  <div *ngIf="isProcessing" class="processing-message">
+    <p>Processing payment, please wait...</p>
+  </div>
+</div>

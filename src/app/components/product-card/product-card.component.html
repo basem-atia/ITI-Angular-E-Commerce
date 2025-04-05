@@ -1,4 +1,8 @@
-<div class="card border" [title]="'Shipping is ' + product.shipping">
+<div
+  class="card border"
+  [title]="'Shipping is ' + product.shipping"
+  (click)="goToProduct()"
+>
   <div class="card-header d-flex position-relative">
     <div class="badge-container">
       @if (isNew) {

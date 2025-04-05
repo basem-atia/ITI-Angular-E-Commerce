@@ -6,7 +6,7 @@ p {
   transition: all 0.3s;
 }
 p:hover {
-  transform: translatex(10px);
+  transform: translatex(5px);
 }
 .z-101 {
   z-index: 101;

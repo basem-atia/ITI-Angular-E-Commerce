@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row mt-2 mb-2">
     <div class="column col-12">
-      <div class="title">
+      <div class="title ms-4">
         <span class="word-transparent">Home </span>
         <span class="word-transparent">/ </span>
         <span class="word">Cart</span>
@@ -17,54 +17,6 @@
           <div class="td quantity"><span class="text">Quantity</span></div>
           <div class="td subtotal"><span class="text">Subtotal</span></div>
         </div>
-        <!-- <div class="tr d-flex justify-content-start align-items-center mb-3">
-          <div class="td product">
-            <div class="product-description">
-              <div
-                class="item d-flex justify-content-start my-auto align-items-center position-relative"
-              >
-                <div class="product-image me-3">
-                  <div class="product-cancel position-absolute">
-                    <i class="bi bi-circle-fill cancel-circle text-center"></i>
-                    <i
-                      class="bi bi-x cancel-x position-absolute text-center"
-                    ></i>
-                  </div>
-                </div>
-                <span class="text">{{ productName }}</span>
-              </div>
-            </div>
-          </div>
-          <div class="td price text">
-            <span class="text">{{
-              productPrice | currency : "USD" : "symbol-narrow" : "1.0"
-            }}</span>
-          </div>
-          <div class="td quantity">
-            <div class="custom-input my-auto">
-              <input
-                class="quantity-input"
-                type="number"
-                [(ngModel)]="quantity"
-                min="1"
-              />
-              <div class="spinner-buttons">
-                <button class="increment" (click)="increaseValue()">
-                  <i class="bi bi-chevron-up"></i>
-                </button>
-                <button class="decrement" (click)="decreaseValue()">
-                  <i class="bi bi-chevron-down"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="td subtotal">
-            <span class="text">{{
-              totalPrice | currency : "USD" : "symbol-narrow" : "1.0"
-            }}</span>
-          </div>
-        </div> -->
-
         <div
           class="tr d-flex justify-content-start align-items-center mb-3"
           *ngFor="let product of productsArray; let i = index"
@@ -76,22 +28,23 @@
               >
                 <div
                   class="product-image me-3"
-                  [style.backgroundImage]="'url(' + product.productImage + ')'"
+                  [style.backgroundImage]="'url(' + product.image + ')'"
                 >
                   <div class="product-cancel position-absolute">
                     <i class="bi bi-circle-fill cancel-circle text-center"></i>
                     <i
                       class="bi bi-x cancel-x position-absolute text-center"
+                      (click)="canceled(i)"
                     ></i>
                   </div>
                 </div>
-                <span class="text">{{ product.productName }}</span>
+                <span class="text">{{ product.name }}</span>
               </div>
             </div>
           </div>
           <div class="td price text">
             <span class="text">{{
-              product.productPrice | currency : "USD" : "symbol-narrow" : "1.0"
+              product.price | currency : "USD" : "symbol-narrow" : "1.0"
             }}</span>
           </div>
           <div class="td quantity">
@@ -113,9 +66,13 @@
             </div>
           </div>
           <div class="td subtotal">
-            <span class="text">{{
-              product.quantity * product.productPrice
+            <!-- <span class="text">{{
+              product.quantity! * product.price -
+              ((product.discount * product.price) / 100).toPrecision()
                 | currency : "USD" : "symbol-narrow" : "1.0"
+            }}</span> -->
+            <span class="text">{{
+              getSubtotal(product) | currency : "USD" : "symbol-narrow"
             }}</span>
           </div>
         </div>
@@ -145,32 +102,16 @@
               {{ totalShipping == 0 ? totalPrice : totalPrice + totalShipping }}
             </div>
           </div>
-          <button class="button mx-auto process-to-checkout">
+          <button
+            class="button mx-auto process-to-checkout"
+            type="button"
+            (click)="sub()"
+          >
             Procees to checkout
           </button>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div class="row">
-    <div class="column col-12">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <button class="button return-shop">Return To Shop</button
-        ><button class="button update-cart">Update Cart</button>
-      </div>
-    </div> -->
 </div>
-<div class="row d-flex justify-content-between">
-  <!-- <div class="column dis-div col-12 col-md-12 col-lg-6 mb-3">
-      <div class="coupon-field">
-        <input
-          type="text"
-          class="me-2"
-          name=""
-          id=""
-          placeholder="Coupon Code"
-        />
-        <button class="button apply-coupon me-lg-4">Apply Coupon</button>
-      </div>
-    </div> -->
-</div>
+<div class="row d-flex justify-content-between"></div>
