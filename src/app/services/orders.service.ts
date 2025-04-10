@@ -17,9 +17,9 @@ export class OrdersService {
     );
   }
   getToken(): null | string {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem('authtoken');
   }
   setToken(token: string): void {
-    return localStorage.setItem('authToken', token);
+    return localStorage.setItem('authtoken', token);
   }
 }

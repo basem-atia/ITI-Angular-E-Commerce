@@ -71,9 +71,16 @@
       <button class="btn btn-sm btn-light" routerLink="login">Log in</button>
     </div>
     } @else {
-    <span class="text-light cursor-pointer" (click)="goToAcount()">{{
-      user ? user.name : ""
-    }}</span>
+    <span class="text-light cursor-pointer ms-0 ms-sm-1" (click)="goToAcount()"
+      >Welcome, {{ user ? user.name : "" }}</span
+    >
+    <button
+      class="btn btn-danger d-flex align-items-center ms-1 ms-lg-4 logout"
+      style="height: 30px"
+      (click)="logout()"
+    >
+      Log Out
+    </button>
     }
   </div>
   <nav

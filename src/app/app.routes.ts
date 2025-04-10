@@ -14,6 +14,8 @@ import { ResetPasswordPhoneComponent } from './pages/reset-password-phone/reset-
 import { OrdersSummaryComponent } from './components/orders-summary/orders-summary.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CartComponent } from './components/cart/cart/cart.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactComponent } from './components/contact/contact/contact/contact.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', title: 'Home' },
@@ -31,10 +33,10 @@ export const routes: Routes = [
     path: 'resetPasswordWithEmail/:resetToken',
     component: ResetPasswordComponent,
   },
-
+  { path: 'aboutUs', component: AboutUsComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'resetPasswordPhone', component: ResetPasswordPhoneComponent },
   { path: 'ordersSummary', component: OrdersSummaryComponent },
-
+  { path: 'contact', component: ContactComponent },
   { path: '**', component: NotFoundComponent, title: 'Error 404' },
 ];
