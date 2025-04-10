@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -32,36 +33,51 @@ export class LoginComponent {
     ]),
   });
 
-  serverMessage: string = '';
-  isSuccess: boolean = false;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toaster: ToastrService
+  ) {}
 
-  //inject auth service and router in constructor
-  constructor(private authService: AuthService, private router: Router) {}
-
-  //login function
   login() {
     if (this.myForm.valid) {
-      this.authService.login(this.myForm.value).subscribe({
+      const user = {
+        password: this.myForm.value.password,
+        email: '',
+        phone: '',
+      };
+      if (
+        this.myForm.value.emailPhone?.match(
+          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        )
+      ) {
+        user.email = this.myForm.value.emailPhone;
+      }
+      if (this.myForm.value.emailPhone?.match(/^\+?[0-9]{11}$/)) {
+        user.phone = this.myForm.value.emailPhone;
+      }
+
+      this.authService.login(user).subscribe({
         next: (res) => {
           if (res && res.token) {
-            this.serverMessage = 'Login successful!';
-            this.isSuccess = true;
             this.authService.saveToken(res.token);
+            if (res.user) {
+              this.authService.saveUser(res.user);
+            }
+            this.toaster.success('Login successful!');
             setTimeout(() => this.router.navigate(['/']), 2000);
           } else {
-            this.serverMessage = 'Login failed. Please try again.';
-            this.isSuccess = false;
+            this.toaster.error('Login failed. Please try again.');
           }
         },
-        error: (err) => {
-          this.serverMessage =
-            'Login failed. Please check your email/phone and password.';
-          this.isSuccess = false;
+        error: () => {
+          this.toaster.error(
+            'Invalid email/phone or password.'
+          );
         },
       });
     } else {
-      this.serverMessage = 'Please fill out the form correctly.';
-      this.isSuccess = false;
+      this.toaster.warning('Please fill out the form correctly.');
     }
   }
 }

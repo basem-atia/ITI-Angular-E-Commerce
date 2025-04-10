@@ -6,7 +6,6 @@
     <div class="right col-md-6 col-12">
       <h2>Create an account</h2>
       <p class="below">Enter your details below</p>
-      <!-- when submit => call register function -->
       <form [formGroup]="myForm" class="form" (ngSubmit)="register()">
         <div class="form-group">
           <input #name formControlName="name" type="text" placeholder="Name" />
@@ -62,25 +61,13 @@
             Invalid password format
           </span>
         </div>
-
-        <span *ngIf="serverMessage" [ngClass]="{'success-msg': isSuccess, 'error-msg': !isSuccess}">
-          {{ serverMessage }}
-        </span>
-
         <div>
           <input class="create-account" type="submit" value="Create Account" />
         </div>
       </form>
-      <div class="google-signup">
-        <input
-          type="button"
-          class="google-signup-btn"
-          value="Sign up with Google"
-        />
-      </div>
       <div class="have-account">
         <p>Already have an account?</p>
-        <span>Log in</span>
+        <span (click)="navigateToLogin()">Log in</span>
       </div>
     </div>
   </div>

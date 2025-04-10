@@ -1,72 +1,208 @@
 <section>
   <div class="container">
-    <div class=" d-flex justify-content-between mt-3">
+    <div class="d-flex justify-content-between mt-3">
       <div class="item">
-        <p><span class="text-muted">Home </span>/ <span class="fa-bold " style="font-weight: 700;">My Acount</span></p>
+        <p>
+          <span class="text-muted">Home </span>/
+          <span class="fa-bold" style="font-weight: 700">My Account</span>
+        </p>
       </div>
       <div class="item">
-        <p><span class="text-muted">Welcome! </span>/ <span style="color: #Bd4444; font-weight: 700;" class="fs-5">Mahmoud</span></p>
+        <p>
+          <span class="text-muted">Welcome! </span>
+          <span style="color: #a12222; font-weight: 700" class="fs-5">
+            {{ currentUser?.name || "Guest" }}
+          </span>
+        </p>
       </div>
     </div>
   </div>
+
   <div class="container">
-    <div class="manageMyAcount">
+    <div class="manageMyAccount">
       <div class="row">
-    <div class="col-md-4">
-      <h6><a href="#" class="text-decoration-none text-dark mt-5">Manage My Profile</a></h6>
-      <ul class="list-unstyled ms-3 p-2">
-        <li class="p-2 " style="font-weight: 600 "><a href="#" style="color: #Bd4444;" class="text-decoration-none text-dark m-2" ><span style="color: #Bd4444;">My Profile</span></a></li>
-        <li class="p-2" style="font-weight: 350;"><a href="#" class="text-decoration-none text-dark m-2">Adress Book</a></li>
-        <li class="p-2" style="font-weight: 350;"><a href="#" class="text-decoration-none text-dark m-2">My PayMent Optiones</a></li>
-      </ul>
-      <h6><a href="#" class="text-decoration-none text-dark mt-5">Manage My Orders</a></h6>
-      <ul class="list-unstyled ms-3 p-2">
-        <li class="p-2" style="font-weight: 350;"><a href="#" class="text-decoration-none text-dark m-2">My Returns</a></li>
-        <li class="p-2" style="font-weight: 350;"><a href="#" class="text-decoration-none text-dark m-2">My Cancellation</a></li>
-      </ul>
-      <h6><a href="#" class="text-decoration-none text-dark mt-5">My WishList</a></h6>
-      <ul class="list-unstyled ms-3 p-2">
-        <li class="p-2" style="font-weight: 350;"><a href="#" class="text-decoration-none text-dark m-2">My WishList</a></li>
-      </ul>
-    </div>
-    <div class="col-md-8 text-bg-light rounded-5  mb-5 ">
-      <form class="row g-3 w-75 m-auto">
-        <h6 style="color: #Bd4444;" class="mt-3">Edit My Profile</h6>
-        <div class="col-md-6">
-          <label for="Frist Name" class="form-label mt-3">Frist Name</label>
-          <input type="text" class="form-control" id="Frist Name" placeholder="Mahmoud">
-        </div>
-        <div class="col-md-6">
-          <label for="Last Name" class="form-label mt-3">Last Name</label>
-          <input type="text" class="form-control" id="Last Name" placeholder="Ahmed">
-        </div>
-        <div class="col-md-6">
-          <label for="Email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="Email" placeholder="Mahmoud@gmail.com">
-        </div>
-        <div class="col-md-6">
-          <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="col-12">
-          <label for="password" class="form-label">Password Changes</label>
-          <input type="password" class="form-control" id="password" placeholder="Current Password">
-        </div>
-        <div class="col-12">
-          <input type="password" class="form-control" id="password" placeholder="New Password">
-        </div>
-        <div class="col-12">
-          <input type="password" class="form-control" id="password" placeholder="Confirm New Password">
+        <div class="col-md-4">
+          <h6>
+            <a href="#" class="text-decoration-none text-dark mt-5"
+              >Manage My Profile</a
+            >
+          </h6>
+          <ul class="list-unstyled ms-3 p-2">
+            <li class="p-2" style="font-weight: 600">
+              <a
+                href="#"
+                class="text-decoration-none text-dark m-2"
+                style="color: #a12222"
+              >
+                My Profile
+              </a>
+            </li>
+            <li class="p-2">
+              <a href="#" class="text-decoration-none text-dark m-2"
+                >Address Book</a
+              >
+            </li>
+            <li class="p-2">
+              <a href="#" class="text-decoration-none text-dark m-2"
+                >My Payment Options</a
+              >
+            </li>
+          </ul>
         </div>
 
-       <div class="form-group row flex-row-reverse mt-4">
-        <div class="col-md-6 mb-5">
-          <button type="submit" class="btn  m-2">cancel</button>
-          <button type="submit" style="background-color: #Bd4444;" class="btn btn-primary  m-2 border-0">Save Changes</button>
+        <div class="col-md-8 col-12 text-bg-light rounded-5 mb-5">
+          <form
+            class="row g-3 w-75 m-auto"
+            [formGroup]="accountForm"
+            (ngSubmit)="updateProfile()"
+          >
+            <h6 style="color: #a12222" class="mt-3">Edit My Profile</h6>
+
+            <!-- Full Name -->
+            <div class="col-12">
+              <label for="fullName" class="form-label mt-3">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fullName"
+                formControlName="name"
+                placeholder="Enter your name"
+                required
+                #name
+              />
+            </div>
+            <div
+              class="valid"
+              [ngClass]="{
+                'error-msg': !accountForm.controls['name'].valid && name.value
+              }"
+            >
+              <span *ngIf="!accountForm.controls['name'].valid && name.value">
+                Invalid name format
+              </span>
+            </div>
+
+            <!-- Email/Phone -->
+            <div class="col-12">
+              <label for="email" class="form-label">Email/Phone</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="emailPhone"
+                placeholder="Enter your email/phone"
+                required
+                #emailPhone
+              />
+            </div>
+            <div
+              class="valid"
+              [ngClass]="{
+                'error-msg':
+                  !accountForm.controls['emailPhone'].valid && emailPhone.value
+              }"
+            >
+              <span
+                *ngIf="
+                  !accountForm.controls['emailPhone'].valid && emailPhone.value
+                "
+              >
+                Invalid email/phone format
+              </span>
+            </div>
+
+            <!-- Address -->
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputAddress"
+                formControlName="address"
+                placeholder="Enter your address"
+                #address
+              />
+            </div>
+
+            <!-- Password Change Fields -->
+            <div class="col-12">
+              <label for="currentPassword" class="form-label"
+                >Password Changes</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="currentPassword"
+                formControlName="currentPassword"
+                placeholder="Current Password"
+                #currentPassword
+              />
+            </div>
+
+            <div class="col-12">
+              <input
+                type="password"
+                class="form-control"
+                id="newPassword"
+                formControlName="newPassword"
+                placeholder="New Password"
+                #newPassword
+              />
+            </div>
+            <div
+              class="valid"
+              [ngClass]="{
+                'error-msg':
+                  !accountForm.controls['newPassword'].valid &&
+                  newPassword.value
+              }"
+            >
+              <span
+                *ngIf="
+                  !accountForm.controls['newPassword'].valid &&
+                  newPassword.value
+                "
+              >
+                Invalid password format
+              </span>
+            </div>
+
+            <div class="col-12">
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                placeholder="Confirm New Password"
+                #confirmPassword
+              />
+            </div>
+
+            <!-- Server Response Message -->
+            <span
+              *ngIf="serverMessage"
+              [ngClass]="{ 'success-msg': isSuccess, 'error-msg': !isSuccess }"
+            >
+              {{ serverMessage }}
+            </span>
+
+            <!-- Submit & Cancel Buttons -->
+            <div class="form-group row flex-row-reverse mt-4">
+              <div class="col-md-6 mb-5">
+                <button type="button" class="btn m-2" (click)="cancel()">
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  style="background-color: #a12222"
+                  class="btn btn-primary m-2 border-0"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-       </div>
-      </form>
-    </div>
       </div>
     </div>
   </div>

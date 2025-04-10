@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -37,37 +38,53 @@ export class RegisterComponent {
     ]),
   });
 
-  serverMessage: string = '';
-  isSuccess: boolean = false;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toaster: ToastrService
+  ) {}
 
-  //inject auth service and router in constructor
-  constructor(private authService: AuthService, private router: Router) {}
-
-  //register function
   register() {
     if (this.myForm.valid) {
-      this.authService.register(this.myForm.value).subscribe({
+      var user = {
+        name: this.myForm.value.name,
+        password: this.myForm.value.password,
+        email: '',
+        phone: '',
+      };
+      if (
+        this.myForm.value.emailPhone?.match(
+          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        )
+      ) {
+        user.email = this.myForm.value.emailPhone;
+      }
+      if (this.myForm.value.emailPhone?.match(/^\+?[0-9]{11}$/)) {
+        user.phone = this.myForm.value.emailPhone;
+      }
+      this.authService.register(user).subscribe({
         next: (res) => {
-          if ((res.message = 'Already exists, Please log in...')) {
-            this.serverMessage = 'User already exists!';
-            this.isSuccess = false;
+          if (res.message === 'Already exists, Please log in...') {
+            this.toaster.error('User already exists!');
           } else if (
             res &&
             res.message !== 'Already exists, Please log in...'
           ) {
-            this.serverMessage = 'Registration successful!';
-            this.isSuccess = true;
+            this.toaster.success('Registration successful!');
             setTimeout(() => this.router.navigate(['/login']), 2000);
           }
         },
         error: (err) => {
-          this.serverMessage = 'Registration failed. Please try again.';
-          this.isSuccess = false;
+          console.log(err.error);
+          this.toaster.error('Registration failed. Please try again.');
         },
       });
     } else {
-      this.serverMessage = 'Please fill out the form correctly.';
-      this.isSuccess = false;
+      this.toaster.warning('Please fill out the form correctly.');
     }
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
   }
 }

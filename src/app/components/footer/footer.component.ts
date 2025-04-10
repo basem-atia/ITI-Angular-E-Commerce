@@ -15,7 +15,7 @@ export class FooterComponent {
       let eventString = e.toString();
       if (eventString.includes('ActivationStart')) {
         this.hide =
-          eventString.includes('login') || eventString.includes('signup');
+          eventString.includes('login') || eventString.includes('register');
       }
     });
   }

@@ -47,14 +47,6 @@
             Invalid password format
           </span>
         </div>
-
-        <span
-          *ngIf="serverMessage"
-          [ngClass]="{ 'success-msg': isSuccess, 'error-msg': !isSuccess }"
-        >
-          {{ serverMessage }}
-        </span>
-
         <div>
           <input class="log-in" type="submit" value="Log In" />
         </div>
