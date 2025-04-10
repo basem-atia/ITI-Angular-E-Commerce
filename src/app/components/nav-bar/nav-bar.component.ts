@@ -6,6 +6,7 @@ import { TCategory } from '../../types/TCategory';
 import { ResetFilterService } from '../../services/reset-filter.service';
 import { StorageKeys } from '../../constant';
 import { FormsModule } from '@angular/forms';
+import { BehaviourSubjectService } from '../../services/behaviour-subject.service';
 @Component({
   selector: 'app-nav-bar',
   imports: [RouterModule, LogoComponent, FormsModule],
@@ -22,7 +23,8 @@ export class NavBarComponent {
   constructor(
     private router: Router,
     private categoryService: CategoryService,
-    private reset: ResetFilterService
+    private reset: ResetFilterService,
+    private behaviourSubject: BehaviourSubjectService
   ) {
     categoryService.getAll().subscribe({
       next: (data) => {
@@ -37,8 +39,16 @@ export class NavBarComponent {
           eventString.includes('login') || eventString.includes('signup');
       }
     });
-    this.isUser = localStorage.getItem(StorageKeys.LToken) ? true : false;
-    this.user = JSON.parse(localStorage.getItem(StorageKeys.LUser) || '') || '';
+    behaviourSubject.keyexists.subscribe((status) => {
+      this.isUser = status;
+      if (status) {
+        this.user = JSON.parse(localStorage.getItem(StorageKeys.LUser)!);
+      }
+    });
+    // this.isUser = localStorage.getItem(StorageKeys.LToken) ? true : false;
+    // this.user =
+    //   JSON.parse(localStorage.getItem(StorageKeys.LUser) || '{"default":""}') ||
+    //   '';
   }
   onSelectCategory = (category: TCategory) => {
     this.selectedCategory = category;
@@ -47,6 +57,10 @@ export class NavBarComponent {
     const target = e.target as HTMLInputElement;
     this.searchText = target.value;
   };
+  logout() {
+    this.behaviourSubject.logOut();
+    this.router.navigate(['./login']);
+  }
   onSubmitSearch(e: Event) {
     this.reset.resetFilter();
     sessionStorage.setItem(StorageKeys.SSearchText, this.searchText);

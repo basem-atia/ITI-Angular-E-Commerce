@@ -13,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   quantity: number = 1;
   selectedSize: string = 'M';
   product: any;
-  products: { productId: string; count: number }[] = [];
+  products: { productsId: string; count: number }[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -50,9 +50,11 @@ export class ProductDetailsComponent implements OnInit {
   addToCart() {
     if (!this.product) return;
 
-    const item = { productId: this.product._id, count: this.quantity };
+    const item = { productsId: this.product._id, count: this.quantity };
 
-    const existing = this.products.find((p) => p.productId === item.productId);
+    const existing = this.products.find(
+      (p) => p.productsId === item.productsId
+    );
     if (existing) {
       existing.count += this.quantity;
     } else {

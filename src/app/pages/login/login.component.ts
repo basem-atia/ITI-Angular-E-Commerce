@@ -9,6 +9,7 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviourSubjectService } from '../../services/behaviour-subject.service';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private behaviourService: BehaviourSubjectService
   ) {}
 
   login() {
@@ -63,6 +65,7 @@ export class LoginComponent {
             this.authService.setToken(res.token);
             if (res.user) {
               this.authService.saveUser(res.user);
+              this.behaviourService.updateKeyStatus();
             }
             this.toaster.success('Login successful!');
             setTimeout(() => this.router.navigate(['/']), 2000);

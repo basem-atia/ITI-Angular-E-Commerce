@@ -69,6 +69,15 @@ export class AuthService {
     );
   }
   getProductsFromStorage() {
+    // const prd = [
+    //   { productsId: '67eeeaa6b1220a66606c9597', count: '3' },
+    //   { productsId: '67eeeaa6b1220a66606c9599', count: '4' },
+    //   { productsId: '67eeeaadb1220a66606c95f4', count: '5' },
+    //   { productsId: '67eeeab0b1220a66606c961b', count: '4' },
+    //   { productsId: '67eeeab4b1220a66606c9643', count: '4' },
+    // ];
+    // const jsonString = JSON.stringify(prd);
+    // localStorage.setItem('products', jsonString);
     const products: { productsId: string; count: number }[] = JSON.parse(
       localStorage.getItem('products') || '[]'
     );
