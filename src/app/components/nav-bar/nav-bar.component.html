@@ -71,16 +71,28 @@
       <button class="btn btn-sm btn-light" routerLink="login">Log in</button>
     </div>
     } @else {
-    <span class="text-light cursor-pointer ms-0 ms-sm-1" (click)="goToAcount()"
-      >Welcome, {{ user ? user.name : "" }}</span
-    >
-    <button
-      class="btn btn-danger d-flex align-items-center ms-1 ms-lg-4 logout"
-      style="height: 30px"
-      (click)="logout()"
-    >
-      Log Out
-    </button>
+    <div class="btn-group">
+      <div
+        class="dropdown-toggle px-2 text-light d-flex justify-content-center align-items-center"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {{ user ? user.name : "" }}
+      </div>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+          <a class="dropdown-item" (click)="goToAcount()">Profile</a>
+        </li>
+        <li>
+          <a class="dropdown-item" (click)="goToMyCart()">My Cart</a>
+        </li>
+        <li>
+          <a class="dropdown-item" (click)="logout()">Log Out</a>
+        </li>
+      </ul>
+    </div>
+
     }
   </div>
   <nav

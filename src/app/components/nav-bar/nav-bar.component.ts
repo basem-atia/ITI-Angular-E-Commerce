@@ -61,6 +61,7 @@ export class NavBarComponent {
     this.behaviourSubject.logOut();
     this.router.navigate(['./login']);
   }
+
   onSubmitSearch(e: Event) {
     this.reset.resetFilter();
     sessionStorage.setItem(StorageKeys.SSearchText, this.searchText);
@@ -76,5 +77,8 @@ export class NavBarComponent {
   }
   goToAcount = () => {
     this.router.navigateByUrl('/account');
+  };
+  goToMyCart = () => {
+    this.router.navigateByUrl('/cart');
   };
 }
