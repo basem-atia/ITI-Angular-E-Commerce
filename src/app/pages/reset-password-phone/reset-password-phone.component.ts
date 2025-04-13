@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -20,7 +20,8 @@ export class ResetPasswordPhoneComponent {
   constructor(
     private authservice: AuthService,
     private route: ActivatedRoute,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private rot: Router
   ) {}
   resetPasswordForm = new FormGroup(
     {
@@ -71,6 +72,7 @@ export class ResetPasswordPhoneComponent {
               newPassword: '',
               confirmPassword: '',
             });
+            this.rot.navigate(['/home']);
           },
           (err) => {
             this.toaster.error(`${err.error.error}`);

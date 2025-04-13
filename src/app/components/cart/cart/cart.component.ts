@@ -172,7 +172,13 @@ export class CartComponent implements OnInit {
     );
   }
   canceled(i: any) {
+    const id = this.productsArray[i]._id;
     this.productsArray.splice(i, 1);
+    let products: { productsId: string; count: number }[] = JSON.parse(
+      localStorage['products']
+    );
+    products = products.filter((elem) => elem.productsId != id);
+    localStorage['products'] = JSON.stringify(products);
   }
   sub() {
     localStorage['productsArray'] = JSON.stringify(this.productsArray);

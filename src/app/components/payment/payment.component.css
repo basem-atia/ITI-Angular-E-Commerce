@@ -10,7 +10,9 @@
   width: 500px;
   margin: 0 auto;
 }
-
+.prod {
+  height: 45.3vh;
+}
 .card-element {
   width: 100%;
   padding: 10px;

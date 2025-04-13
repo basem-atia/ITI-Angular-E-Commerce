@@ -41,7 +41,7 @@ export class ForgotPasswordComponent {
         (err) => {
           console.log(err);
 
-          this.toaster.error(err.error.message);
+          this.toaster.error(err.error.error);
         }
       );
     }
