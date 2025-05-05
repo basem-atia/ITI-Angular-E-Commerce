@@ -10,7 +10,7 @@ export class OrdersService {
   constructor(private httpclient: HttpClient) {}
   getOrders(): Observable<{ orders: TOrder[] }> {
     return this.httpclient.get<{ orders: TOrder[] }>(
-      'http://localhost:3000/api/ordersSummary/getOrders',
+      'https://iti-angular-e-commerce-back-end-production.up.railway.app/api/ordersSummary/getOrders',
       {
         headers: { authorization: `Bearer ${this.getToken()}` },
       }

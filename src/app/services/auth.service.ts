@@ -13,7 +13,7 @@ export class AuthService {
 
   getUser(): Observable<{ user: { username: string; emailphone: string } }> {
     return this.httpClient.get<{ user: any }>(
-      `http://localhost:3000/api/profile/getUser`,
+      `https://iti-angular-e-commerce-back-end-production.up.railway.app/api/profile/getUser`,
       {
         headers: { authorization: `Bearer ${this.getToken()}` },
       }
@@ -27,7 +27,7 @@ export class AuthService {
     address: string
   ): Observable<{ message: string }> {
     return this.httpClient.put<{ message: string }>(
-      `http://localhost:3000/api/profile/changepassword`,
+      `https://iti-angular-e-commerce-back-end-production.up.railway.app/api/profile/changepassword`,
       {
         oldPass,
         newPass,
@@ -40,7 +40,7 @@ export class AuthService {
   }
   forgetPassword(email: string): Observable<any> {
     return this.httpClient.post(
-      `http://localhost:3000/api/profile/password/forgetPassword`,
+      `https://iti-angular-e-commerce-back-end-production.up.railway.app/api/profile/password/forgetPassword`,
       { email },
       {
         headers: { authorization: `Bearer ${this.getToken()}` },
@@ -52,7 +52,7 @@ export class AuthService {
     resetToken: string
   ): Observable<any> {
     return this.httpClient.post(
-      `http://localhost:3000/api/profile/password/resetPasswordWithEmail`,
+      `https://iti-angular-e-commerce-back-end-production.up.railway.app/api/profile/password/resetPasswordWithEmail`,
       { newPassword, resetToken },
       {
         headers: { authorization: `Bearer ${this.getToken()}` },
@@ -61,7 +61,7 @@ export class AuthService {
   }
   resetPasswordWithPhone(newPassword: string, code: string): Observable<any> {
     return this.httpClient.post(
-      `http://localhost:3000/api/profile/password/resetPasswordWithPhone`,
+      `https://iti-angular-e-commerce-back-end-production.up.railway.app/api/profile/password/resetPasswordWithPhone`,
       { newPassword, code },
       {
         headers: { authorization: `Bearer ${this.getToken()}` },
@@ -95,7 +95,7 @@ export class AuthService {
       productIds.push(elem.productsId);
     });
     return this.httpClient.post<{ data: TProduct[] }>(
-      `http://localhost:3000/api/product/getByIds`,
+      `https://iti-angular-e-commerce-back-end-production.up.railway.app/api/product/getByIds`,
       { ids: productIds },
       {
         headers: { authorization: `Bearer ${this.getToken()}` },
