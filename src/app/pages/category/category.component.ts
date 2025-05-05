@@ -64,7 +64,8 @@ export class CategoryComponent {
     if (
       this.filter?.subCategoryId == '' &&
       this.filter.freeShapping == false &&
-      !this.filter.searchText
+      !this.filter.searchText &&
+      !this.filter.sortedBy
     ) {
       this.producService
         .getAllByCategoryId(this.category._id, this.pageNumber)

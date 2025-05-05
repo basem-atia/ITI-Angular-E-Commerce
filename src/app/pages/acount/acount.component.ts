@@ -108,7 +108,7 @@ export class AcountComponent implements OnInit {
         )
         .subscribe(
           (res) => {
-            this.toaster.success('Welcome');
+            this.toaster.success('Updated Successfully');
 
             this.myform.patchValue({
               password: '',
