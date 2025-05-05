@@ -13,7 +13,7 @@ export class StripeService {
     payload: TPaymentPayLoad
   ): Observable<{ cash: string; client_secret: string }> {
     return this.httpclient.post<{ cash: string; client_secret: string }>(
-      'http://localhost:3000/api/payment/create-payment-intent',
+      'https://iti-angular-e-commerce-back-end-production.up.railway.app/api/payment/create-payment-intent',
       { payload },
       {
         headers: { authorization: `Bearer ${this.getToken()}` },
